@@ -6,6 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "NODE_ENV=production node dist/src/index.js",
+    "dev": "NODE_ENV=development node dist/src/index.js",
     "build": "tsc -p tsconfig.json",
     "prepare": "husky"
   },
@@ -16,6 +17,7 @@
     ]
   },
   "dependencies": {
+    "@navikt/oasis": "^3.4.0",
     "express": "^4.21.0"
   },
   "devDependencies": {
