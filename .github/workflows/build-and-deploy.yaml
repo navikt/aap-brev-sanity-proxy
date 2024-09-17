@@ -23,6 +23,8 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-modules-${{ hashFiles('package-lock.json') }}
       - name: Install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
         if: steps.cache-node_modules.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build
