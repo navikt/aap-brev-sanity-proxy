@@ -1,0 +1,53 @@
+name: Build og deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+      - uses: actions/cache@v4
+        id: cache-node_modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - uses: nais/docker-build-push@v0
+        id: docker-push
+        with:
+          team: aap
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+    outputs:
+      image: ${{ steps.docker-push.outputs.image }}
+
+    deploy-dev:
+      needs: build-and-push
+      runs-on: ubuntu-latest
+      permissions:
+        contents: read
+        id-token: write
+      steps:
+        - uses: actions/checkout@v4
+        - uses: nais/deploy/actions/deploy@v2
+          env:
+            PRINT_PAYLOAD: true
+            CLUSTER: dev-gcp
+            DRY_RUN: true
+            RESOURCE: .nais/nais.yaml
+            IMAGE: ${{ needs.build-and-push.outputs.image }}

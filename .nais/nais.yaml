@@ -1,0 +1,27 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: brev-sanity-proxy
+  namespace: aap
+  labels:
+    team: aap
+    sub: brev-sanity-proxy
+spec:
+  image: {{image}}
+  replicas:
+    disableAutoScaling: true
+    max: 1
+    min: 1
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: 100m
+    limits:
+      memory: 128Mi
+  azure:
+    application:
+      enabled: true
+  accessPolicy:
+    inbound:
+      rules:
+        - application: brev
