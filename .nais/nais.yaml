@@ -18,6 +18,10 @@ spec:
       cpu: 100m
     limits:
       memory: 128Mi
+  liveness:
+    path: /internal/health/isAlive
+  readiness:
+    path: /internal/health/isReady
   azure:
     application:
       enabled: true
