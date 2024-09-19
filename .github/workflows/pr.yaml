@@ -1,0 +1,33 @@
+name: Pull Request
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SKIP_YARN_COREPACK_CHECK: true
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          cache: yarn
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/cache@v4
+        id: cache-node_modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+      - name: Build
+        run: yarn build
