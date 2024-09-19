@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@navikt/oasis": "^3.4.0",
+    "@sanity/client": "^6.21.3",
+    "dotenv": "^16.4.5",
     "express": "^4.21.0"
   },
   "devDependencies": {

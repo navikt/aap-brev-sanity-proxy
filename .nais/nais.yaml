@@ -29,3 +29,10 @@ spec:
     inbound:
       rules:
         - application: brev
+  env:
+    - name: SANITY_DATASET
+      value: production
+    - name: SANITY_PROJECT_ID
+      value: 948n95rd
+  envFrom:
+    - secret: sanity-api-read-token-dev
