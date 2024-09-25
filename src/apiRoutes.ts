@@ -5,6 +5,7 @@ import {
   getInnhold,
   getTekstbolker,
 } from "./sanity/brevQueries.js";
+import { flettBrev } from "./brevfletter.js";
 
 const router = express.Router();
 
@@ -19,13 +20,19 @@ router.get("/tekstbolker", async (_, res) => {
 });
 
 router.get("/innhold", async (_, res) => {
-  const tekstbolker = await getInnhold();
-  res.send(tekstbolker);
+  const innhold = await getInnhold();
+  res.send(innhold);
 });
 
 router.get("/faktagrunnlag", async (_, res) => {
-  const tekstbolker = await getFaktagrunnlag();
-  res.send(tekstbolker);
+  const faktagrunnlag = await getFaktagrunnlag();
+  res.send(faktagrunnlag);
+});
+
+router.get("/flettet", async (_, res) => {
+  const innhold = await getInnhold();
+  const flettetBrev = innhold.map((x) => flettBrev(x));
+  res.send(flettetBrev);
 });
 
 export default router;

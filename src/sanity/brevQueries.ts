@@ -1,4 +1,5 @@
 import { client } from "./client.js";
+import { Brevtype, Faktagrunnlag, Innhold, Tekstbolk } from "./sanityTypes.js";
 
 export interface EnkelBrevmal {
   brevtittel: string;
@@ -7,17 +8,10 @@ export interface EnkelBrevmal {
 }
 
 const brevtyperGroq = `
-*[_type=='brevtype']{
-  _id,
-  overskrift,
-  tekstbolker
-}`;
+*[_type=='brevtype']`;
 
 const tekstbolkGroq = `
-*[_type=='tekstbolk']{
-  overskrift,
-  innhold,
-}`;
+*[_type=='tekstbolk']`;
 
 const innholdGroq = `
 *[_type=='innhold']`;
@@ -25,18 +19,18 @@ const innholdGroq = `
 const faktagrunnlagGroq = `
 *[_type=='faktagrunnlag']`;
 
-export const getBrevtyper = async (): Promise<object[]> => {
+export const getBrevtyper: () => Promise<Brevtype[]> = async () => {
   return await client.fetch(brevtyperGroq);
 };
 
-export const getTekstbolker = async (): Promise<object[]> => {
+export const getTekstbolker: () => Promise<Tekstbolk[]> = async () => {
   return await client.fetch(tekstbolkGroq);
 };
 
-export const getInnhold = async (): Promise<object[]> => {
+export const getInnhold: () => Promise<Innhold[]> = async () => {
   return await client.fetch(innholdGroq);
 };
 
-export const getFaktagrunnlag = async (): Promise<object[]> => {
+export const getFaktagrunnlag: () => Promise<Faktagrunnlag[]> = async () => {
   return await client.fetch(faktagrunnlagGroq);
 };
