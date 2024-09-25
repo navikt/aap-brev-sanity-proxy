@@ -2,7 +2,13 @@ import {
   Content as SanityContent,
   Innhold as SanityInnhold,
 } from "./sanity/sanityTypes.js";
-import { Content, Faktagrunnlag, Innhold, Mark, Tekst } from "./types.js";
+import {
+  Tekst,
+  Faktagrunnlag,
+  Innhold,
+  Formattering,
+  Segment,
+} from "./types.js";
 
 export function flettBrev(innhold: SanityInnhold): Innhold {
   return {
@@ -14,19 +20,17 @@ export function flettBrev(innhold: SanityInnhold): Innhold {
   };
 }
 
-function mapRiktekst(riktekst: SanityContent): Content {
+function mapRiktekst(riktekst: SanityContent): Tekst {
   return {
     children: (riktekst.children || [])?.map(mapContentChild),
-    style: riktekst.style,
-    listItem: riktekst.listItem,
-    level: riktekst.level,
+    listeInnrykk: riktekst.level,
   };
 }
 
-function mapContentChild(contentChild: ContentChild): Tekst | Faktagrunnlag {
+function mapContentChild(contentChild: ContentChild): Segment | Faktagrunnlag {
   if (contentChild._type == "span") {
     return {
-      marks: (contentChild.marks || []) as Mark[],
+      formattering: (contentChild.marks || []) as Formattering[],
       text: contentChild.text!,
       _type: "tekst",
     };

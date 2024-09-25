@@ -1,25 +1,23 @@
 export type Innhold = {
   language?: string;
   overskrift: string;
-  riktekst: Array<Content>;
+  riktekst: Array<Tekst>;
   kanRedigeres: boolean;
   erFullstendig: boolean;
 };
 
-export type Content = {
-  children: Array<Tekst | Faktagrunnlag>;
-  style?: "normal";
-  listItem?: "bullet";
-  level?: number;
+export type Tekst = {
+  children: Array<Segment | Faktagrunnlag>;
+  listeInnrykk?: number;
 };
 
-export type Tekst = {
-  marks: Array<Mark>;
+export type Segment = {
+  formattering: Array<Formattering>;
   text: string;
   _type: "tekst";
 };
 
-export type Mark = "underline" | "em" | "strong";
+export type Formattering = "underline" | "em" | "strong";
 
 export type Faktagrunnlag = {
   _ref: string;
