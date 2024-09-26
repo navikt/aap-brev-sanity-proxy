@@ -1,11 +1,10 @@
 import { client } from "./client.js";
-import { Brevtype, Faktagrunnlag, Innhold, Tekstbolk } from "./sanityTypes.js";
-
-export interface EnkelBrevmal {
-  brevtittel: string;
-  _id: string;
-  brevtype: string;
-}
+import {
+  Brevtype,
+  Faktagrunnlag,
+  Innhold,
+  Tekstbolk,
+} from "@navikt/aap-sanity-schema-types";
 
 const brevtyperGroq = `
 *[_type=='brevtype']`;

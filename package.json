@@ -17,6 +17,7 @@
     ]
   },
   "dependencies": {
+    "@navikt/aap-sanity-schema-types": "^0.0.2",
     "@navikt/oasis": "^3.4.0",
     "@sanity/client": "^6.21.3",
     "dotenv": "^16.4.5",

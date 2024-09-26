@@ -1,7 +1,7 @@
 import {
   Content as SanityContent,
   Innhold as SanityInnhold,
-} from "./sanity/sanityTypes.js";
+} from "@navikt/aap-sanity-schema-types";
 import {
   Tekst,
   Faktagrunnlag,
