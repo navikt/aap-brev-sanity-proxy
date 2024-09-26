@@ -1,6 +1,7 @@
 import {
   Content as SanityContent,
   Innhold as SanityInnhold,
+  Faktagrunnlag as SanityFaktagrunnlag,
 } from "@navikt/aap-sanity-schema-types";
 import {
   Tekst,
@@ -10,24 +11,37 @@ import {
   Segment,
 } from "./types.js";
 
-export function flettBrev(innhold: SanityInnhold): Innhold {
+export function flettInnhold(
+  innhold: SanityInnhold,
+  faktagrunnlag: SanityFaktagrunnlag[],
+): Innhold {
   return {
     language: innhold.language,
     overskrift: innhold.overskrift!,
-    riktekst: (innhold.riktekst || []).map(mapRiktekst),
+    riktekst: (innhold.riktekst || []).map((riktekst) =>
+      mapRiktekst(riktekst, faktagrunnlag),
+    ),
     kanRedigeres: innhold.kanRedigeres!,
     erFullstendig: innhold.erFullstendig!,
   };
 }
 
-function mapRiktekst(riktekst: SanityContent): Tekst {
+function mapRiktekst(
+  riktekst: SanityContent,
+  faktagrunnlag: SanityFaktagrunnlag[],
+): Tekst {
   return {
-    children: (riktekst.children || [])?.map(mapContentChild),
+    children: (riktekst.children || [])?.map((child) =>
+      mapContentChild(child, faktagrunnlag),
+    ),
     listeInnrykk: riktekst.level,
   };
 }
 
-function mapContentChild(contentChild: ContentChild): Segment | Faktagrunnlag {
+function mapContentChild(
+  contentChild: ContentChild,
+  faktagrunnlag: SanityFaktagrunnlag[],
+): Segment | Faktagrunnlag {
   if (contentChild._type === "span") {
     return {
       formattering: (contentChild.marks || []) as Formattering[],
@@ -35,12 +49,21 @@ function mapContentChild(contentChild: ContentChild): Segment | Faktagrunnlag {
       tekstType: "tekst",
     };
   } else if (contentChild._type === "faktagrunnlag") {
+    const fakta = faktagrunnlag.find(
+      (fakta) => fakta._id === contentChild._ref,
+    );
+    if (!fakta) {
+      throw new Error(
+        `Fant ikke faktagrunnlag med referanse ${contentChild._ref}`,
+      );
+    }
     return {
-      referanse: contentChild._ref,
+      visningsnavn: fakta.visningsnavn!,
+      tekniskNavn: fakta.tekniskNavn!,
       tekstType: "faktagrunnlag",
     };
   }
-  throw new Error("");
+  throw new Error(`Ukjent innholdstype ${contentChild._type}`);
 }
 
 type ContentChild =

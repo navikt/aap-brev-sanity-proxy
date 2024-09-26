@@ -20,6 +20,7 @@ export type Segment = {
 export type Formattering = "underline" | "em" | "strong";
 
 export type Faktagrunnlag = {
-  referanse: string;
+  visningsnavn: string;
+  tekniskNavn: string;
   tekstType: "faktagrunnlag";
 };
