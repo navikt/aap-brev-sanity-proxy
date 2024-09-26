@@ -1,7 +1,5 @@
-import { LocaleString } from "@navikt/aap-sanity-schema-types/sanity-schema";
-
 export type Tekstbolk = {
-  overskrift?: LocaleString; // TODO: endre til string
+  overskrift?: string;
   innhold: Array<Innhold>;
 };
 
@@ -31,3 +29,9 @@ export type Faktagrunnlag = {
   tekniskNavn: string;
   tekstType: "faktagrunnlag";
 };
+
+export enum Språk {
+  nb = "nb",
+  nn = "nn",
+  en = "en",
+}

@@ -11,20 +11,39 @@ import {
   Formattering,
   Segment,
   Tekstbolk,
+  Språk,
 } from "./types.js";
+import { LocaleString } from "@navikt/aap-sanity-schema-types/sanity-schema";
 
 export function flettTekstbolk(
   tekstbolk: SanityTekstbolk,
   innhold: SanityInnhold[],
   faktagrunnlag: SanityFaktagrunnlag[],
+  språk: Språk,
 ): Tekstbolk {
   return {
-    overskrift: tekstbolk.overskrift,
+    overskrift: tekstbolk.overskrift
+      ? mapLocaleString(tekstbolk.overskrift, språk)
+      : undefined,
     innhold:
       tekstbolk.innhold?.map((innholdRef) =>
         flettInnhold(findByRef(innholdRef._ref, innhold)!, faktagrunnlag),
       ) || [],
   };
+}
+
+function mapLocaleString(
+  localeString: LocaleString,
+  språk: Språk,
+): string | undefined {
+  switch (språk) {
+    case Språk.nb:
+      return localeString.nb;
+    case Språk.nn:
+      return localeString.nn;
+    case Språk.en:
+      return localeString.en;
+  }
 }
 
 export function flettInnhold(
