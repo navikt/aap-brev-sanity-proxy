@@ -5,7 +5,7 @@ import {
   getInnhold,
   getTekstbolker,
 } from "./sanity/brevQueries.js";
-import { flettTekstbolk } from "./brevfletter.js";
+import { flettBrevtype } from "./brevfletter.js";
 import { Språk } from "./types.js";
 
 const router = express.Router();
@@ -35,12 +35,14 @@ router.get("/flettet", async (req, res) => {
   if (!språk) {
     return res.status(400).send("Mangler språk");
   }
+  const brevtyper = await getBrevtyper();
   const tekstbolker = await getTekstbolker();
   const innhold = await getInnhold();
   const faktagrunnlag = await getFaktagrunnlag();
-  const flettetBrev = tekstbolker.map((tekstbolk) =>
-    flettTekstbolk(tekstbolk, innhold, faktagrunnlag, språk),
+  const flettetBrev = brevtyper.map((brevtype) =>
+    flettBrevtype(brevtype, tekstbolker, innhold, faktagrunnlag, språk),
   );
+
   res.send(flettetBrev);
 });
 

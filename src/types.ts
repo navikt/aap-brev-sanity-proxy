@@ -1,3 +1,7 @@
+export type Brevtype = {
+  overskrift?: string;
+  tekstbolker: Array<Tekstbolk>;
+};
 export type Tekstbolk = {
   overskrift?: string;
   innhold: Array<Innhold>;

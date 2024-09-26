@@ -1,4 +1,5 @@
 import {
+  Brevtype as SanityBrevtype,
   Tekstbolk as SanityTekstbolk,
   Innhold as SanityInnhold,
   Content as SanityContent,
@@ -12,8 +13,29 @@ import {
   Segment,
   Tekstbolk,
   Språk,
+  Brevtype,
 } from "./types.js";
 import { LocaleString } from "@navikt/aap-sanity-schema-types/sanity-schema";
+
+export function flettBrevtype(
+  brevtype: SanityBrevtype,
+  tekstbolker: SanityTekstbolk[],
+  innhold: SanityInnhold[],
+  faktagrunnlag: SanityFaktagrunnlag[],
+  språk: Språk,
+): Brevtype {
+  return {
+    overskrift: brevtype.overskrift
+      ? mapLocaleString(brevtype.overskrift, språk)
+      : undefined,
+    tekstbolker:
+      brevtype.tekstbolker
+        ?.map((tekstbolkRef) => findByRef(tekstbolkRef._ref, tekstbolker))
+        ?.map((tekstbolk) =>
+          flettTekstbolk(tekstbolk, innhold, faktagrunnlag, språk),
+        ) || [],
+  };
+}
 
 export function flettTekstbolk(
   tekstbolk: SanityTekstbolk,
