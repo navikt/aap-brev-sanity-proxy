@@ -26,9 +26,10 @@ export function flettTekstbolk(
       ? mapLocaleString(tekstbolk.overskrift, språk)
       : undefined,
     innhold:
-      tekstbolk.innhold?.map((innholdRef) =>
-        flettInnhold(findByRef(innholdRef._ref, innhold)!, faktagrunnlag),
-      ) || [],
+      tekstbolk.innhold
+        ?.map((innholdRef) => findByRef(innholdRef._ref, innhold))
+        ?.filter((innhold) => innhold.language === språk)
+        ?.map((innhold) => flettInnhold(innhold, faktagrunnlag)) || [],
   };
 }
 
