@@ -28,18 +28,19 @@ function mapRiktekst(riktekst: SanityContent): Tekst {
 }
 
 function mapContentChild(contentChild: ContentChild): Segment | Faktagrunnlag {
-  if (contentChild._type == "span") {
+  if (contentChild._type === "span") {
     return {
       formattering: (contentChild.marks || []) as Formattering[],
       text: contentChild.text!,
-      _type: "tekst",
+      tekstType: "tekst",
     };
-  } else {
+  } else if (contentChild._type === "faktagrunnlag") {
     return {
-      _ref: contentChild._ref,
-      _type: "faktagrunnlag",
+      referanse: contentChild._ref,
+      tekstType: "faktagrunnlag",
     };
   }
+  throw new Error("");
 }
 
 type ContentChild =
@@ -50,5 +51,5 @@ type ContentChild =
     }
   | {
       _ref: string;
-      _type: "reference";
+      _type: "faktagrunnlag" | "reference";
     };
