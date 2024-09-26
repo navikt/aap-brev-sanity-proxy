@@ -5,7 +5,7 @@ import {
   getInnhold,
   getTekstbolker,
 } from "./sanity/brevQueries.js";
-import { flettInnhold } from "./brevfletter.js";
+import { flettTekstbolk } from "./brevfletter.js";
 
 const router = express.Router();
 
@@ -30,10 +30,11 @@ router.get("/faktagrunnlag", async (_, res) => {
 });
 
 router.get("/flettet", async (_, res) => {
-  const innholdListe = await getInnhold();
+  const tekstbolker = await getTekstbolker();
+  const innhold = await getInnhold();
   const faktagrunnlag = await getFaktagrunnlag();
-  const flettetBrev = innholdListe.map((innhold) =>
-    flettInnhold(innhold, faktagrunnlag),
+  const flettetBrev = tekstbolker.map((tekstbolk) =>
+    flettTekstbolk(tekstbolk, innhold, faktagrunnlag),
   );
   res.send(flettetBrev);
 });

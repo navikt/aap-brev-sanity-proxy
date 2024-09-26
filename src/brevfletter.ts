@@ -1,6 +1,7 @@
 import {
-  Content as SanityContent,
+  Tekstbolk as SanityTekstbolk,
   Innhold as SanityInnhold,
+  Content as SanityContent,
   Faktagrunnlag as SanityFaktagrunnlag,
 } from "@navikt/aap-sanity-schema-types";
 import {
@@ -9,7 +10,22 @@ import {
   Innhold,
   Formattering,
   Segment,
+  Tekstbolk,
 } from "./types.js";
+
+export function flettTekstbolk(
+  tekstbolk: SanityTekstbolk,
+  innhold: SanityInnhold[],
+  faktagrunnlag: SanityFaktagrunnlag[],
+): Tekstbolk {
+  return {
+    overskrift: tekstbolk.overskrift,
+    innhold:
+      tekstbolk.innhold?.map((innholdRef) =>
+        flettInnhold(findByRef(innholdRef._ref, innhold)!, faktagrunnlag),
+      ) || [],
+  };
+}
 
 export function flettInnhold(
   innhold: SanityInnhold,
@@ -49,14 +65,7 @@ function mapContentChild(
       tekstType: "tekst",
     };
   } else if (contentChild._type === "faktagrunnlag") {
-    const fakta = faktagrunnlag.find(
-      (fakta) => fakta._id === contentChild._ref,
-    );
-    if (!fakta) {
-      throw new Error(
-        `Fant ikke faktagrunnlag med referanse ${contentChild._ref}`,
-      );
-    }
+    const fakta = findByRef(contentChild._ref, faktagrunnlag);
     return {
       visningsnavn: fakta.visningsnavn!,
       tekniskNavn: fakta.tekniskNavn!,
@@ -64,6 +73,18 @@ function mapContentChild(
     };
   }
   throw new Error(`Ukjent innholdstype ${contentChild._type}`);
+}
+
+type SanityObjekt = {
+  _id: string;
+};
+
+function findByRef<T extends SanityObjekt>(ref: string, sanityObjekts: T[]): T {
+  const innhold = sanityObjekts.find((x) => x._id === ref);
+  if (!innhold) {
+    throw new Error(`Fant ikke objekt basert på referanse ${ref}`);
+  }
+  return innhold;
 }
 
 type ContentChild =

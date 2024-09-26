@@ -1,3 +1,10 @@
+import { LocaleString } from "@navikt/aap-sanity-schema-types/sanity-schema";
+
+export type Tekstbolk = {
+  overskrift?: LocaleString; // TODO: endre til string
+  innhold: Array<Innhold>;
+};
+
 export type Innhold = {
   language?: string;
   overskrift: string;
