@@ -12,9 +12,9 @@ import {
   Formattering,
   Segment,
   Tekstbolk,
-  Språk,
   Brevtype,
-} from "./types.js";
+} from "./brevModell.js";
+import { Språk } from "./språk.js";
 import { LocaleString } from "@navikt/aap-sanity-schema-types/sanity-schema";
 
 export function flettBrevtype(

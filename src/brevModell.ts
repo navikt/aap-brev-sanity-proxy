@@ -33,9 +33,3 @@ export type Faktagrunnlag = {
   tekniskNavn: string;
   tekstType: "faktagrunnlag";
 };
-
-export enum Språk {
-  nb = "nb",
-  nn = "nn",
-  en = "en",
-}
