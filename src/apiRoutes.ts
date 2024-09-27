@@ -5,7 +5,7 @@ import { flettBrev } from "./brevService.js";
 
 const router = express.Router();
 
-router.get("/mal", async (req, res) => {
+router.get("/mal", async (req, res, next) => {
   const brevtype = Object.values(Brevtype).find(
     (x) => x === req.query["brevtype"],
   );
@@ -18,9 +18,12 @@ router.get("/mal", async (req, res) => {
     return res.status(400).send("Mangler språk");
   }
 
-  const flettetBrev = await flettBrev(brevtype, språk);
-
-  res.send(flettetBrev);
+  try {
+    const flettetBrev = await flettBrev(brevtype, språk);
+    res.send(flettetBrev);
+  } catch (err) {
+    next(err);
+  }
 });
 
 export default router;
