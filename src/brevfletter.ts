@@ -12,7 +12,7 @@ import {
   Formattering,
   Segment,
   Tekstbolk,
-  Brevtype,
+  Brev,
 } from "./brevModell.js";
 import { Språk } from "./språk.js";
 import { LocaleString } from "@navikt/aap-sanity-schema-types/sanity-schema";
@@ -23,7 +23,7 @@ export function flettBrevtype(
   innhold: SanityInnhold[],
   faktagrunnlag: SanityFaktagrunnlag[],
   språk: Språk,
-): Brevtype {
+): Brev {
   return {
     overskrift: brevtype.overskrift
       ? mapLocaleString(brevtype.overskrift, språk)

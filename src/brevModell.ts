@@ -1,4 +1,4 @@
-export type Brevtype = {
+export type Brev = {
   overskrift?: string;
   tekstbolker: Array<Tekstbolk>;
 };
