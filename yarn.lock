@@ -128,10 +128,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aap-sanity-schema-types@npm:^0.0.2":
-  version: 0.0.2
-  resolution: "@navikt/aap-sanity-schema-types@npm:0.0.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-sanity-schema-types%2F0.0.2%2F1e56b7f7fd41501616cacc74de2e18eb04b2dcfe"
-  checksum: 10c0/006be290498d92bee1a535f046508114e9cad7ba3bb837bc01d3c915b7b788c1d8d80b986b169d5951fb627cd79e08e4f0f96d49275adfba28342c9ca97a4e69
+"@navikt/aap-sanity-schema-types@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@navikt/aap-sanity-schema-types@npm:0.0.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-sanity-schema-types%2F0.0.3%2F897c96bd8903aedccd83a4828e938ebee2a04947"
+  checksum: 10c0/86c586307030b84d6e213532c149bb1c59a3391045bb1497c5ac318906da926df0d14bcf7a6b2e0ea75785c9da097420b6fe537b345b1d7bff8c9f3928d5b9ff
   languageName: node
   linkType: hard
 
@@ -499,7 +499,7 @@ __metadata:
   resolution: "aap-sanity@workspace:."
   dependencies:
     "@eslint/js": "npm:^9.10.0"
-    "@navikt/aap-sanity-schema-types": "npm:^0.0.2"
+    "@navikt/aap-sanity-schema-types": "npm:^0.0.3"
     "@navikt/oasis": "npm:^3.4.0"
     "@sanity/client": "npm:^6.21.3"
     "@types/express": "npm:^4.17.21"
