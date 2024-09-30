@@ -8,28 +8,30 @@ export type Tekstbolk = {
 };
 
 export type Innhold = {
-  language?: string;
+  sprak?: string;
   overskrift: string;
-  riktekst: Array<Tekst>;
+  avsnitt: Array<Avsnitt>;
   kanRedigeres: boolean;
   erFullstendig: boolean;
 };
 
-export type Tekst = {
-  children: Array<Segment | Faktagrunnlag>;
+export type Avsnitt = {
+  tekst: Array<Tekst>;
   listeInnrykk?: number;
 };
 
-export type Segment = {
+export type Tekst = FormattertTekst | Faktagrunnlag;
+
+export type FormattertTekst = {
+  tekst: string;
   formattering: Array<Formattering>;
-  text: string;
-  tekstType: "tekst";
+  type: "tekst";
 };
 
-export type Formattering = "underline" | "em" | "strong";
+export type Formattering = "understrek" | "kursiv" | "fet";
 
 export type Faktagrunnlag = {
   visningsnavn: string;
   tekniskNavn: string;
-  tekstType: "faktagrunnlag";
+  type: "faktagrunnlag";
 };

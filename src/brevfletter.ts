@@ -6,11 +6,11 @@ import {
   Faktagrunnlag as SanityFaktagrunnlag,
 } from "@navikt/aap-sanity-schema-types";
 import {
-  Tekst,
+  Avsnitt,
   Faktagrunnlag,
   Innhold,
   Formattering,
-  Segment,
+  Tekst,
   Tekstbolk,
   Brev,
 } from "./brevModell.js";
@@ -74,9 +74,9 @@ export function flettInnhold(
   faktagrunnlag: SanityFaktagrunnlag[],
 ): Innhold {
   return {
-    language: innhold.language,
+    sprak: innhold.language,
     overskrift: innhold.overskrift!,
-    riktekst: (innhold.riktekst || []).map((riktekst) =>
+    avsnitt: (innhold.riktekst || []).map((riktekst) =>
       mapRiktekst(riktekst, faktagrunnlag),
     ),
     kanRedigeres: innhold.kanRedigeres!,
@@ -87,9 +87,9 @@ export function flettInnhold(
 function mapRiktekst(
   riktekst: SanityContent,
   faktagrunnlag: SanityFaktagrunnlag[],
-): Tekst {
+): Avsnitt {
   return {
-    children: (riktekst.children || [])?.map((child) =>
+    tekst: (riktekst.children || [])?.map((child) =>
       mapContentChild(child, faktagrunnlag),
     ),
     listeInnrykk: riktekst.level,
@@ -99,22 +99,37 @@ function mapRiktekst(
 function mapContentChild(
   contentChild: ContentChild,
   faktagrunnlag: SanityFaktagrunnlag[],
-): Segment | Faktagrunnlag {
+): Tekst | Faktagrunnlag {
   if (contentChild._type === "span") {
     return {
-      formattering: (contentChild.marks || []) as Formattering[],
-      text: contentChild.text!,
-      tekstType: "tekst",
+      tekst: contentChild.text!,
+      formattering: mapFormatterign(contentChild.marks || []),
+      type: "tekst",
     };
   } else if (contentChild._type === "faktagrunnlag") {
     const fakta = findByRef(contentChild._ref, faktagrunnlag);
     return {
       visningsnavn: fakta.visningsnavn!,
       tekniskNavn: fakta.tekniskNavn!,
-      tekstType: "faktagrunnlag",
+      type: "faktagrunnlag",
     };
   }
   throw new Error(`Ukjent innholdstype ${contentChild._type}`);
+}
+
+function mapFormatterign(formattering: string[]): Formattering[] {
+  return formattering.map((x) => {
+    switch (x) {
+      case "underline":
+        return "understrek";
+      case "em":
+        return "kursiv";
+      case "strong":
+        return "fet";
+      default:
+        throw new Error(`Ukjent formattering ${x}`);
+    }
+  });
 }
 
 type SanityObjekt = {
