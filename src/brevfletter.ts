@@ -6,13 +6,13 @@ import {
   Faktagrunnlag as SanityFaktagrunnlag,
 } from "@navikt/aap-sanity-schema-types";
 import {
-  Avsnitt,
-  Faktagrunnlag,
+  Blokk,
   Innhold,
   Formattering,
-  Tekst,
+  BlokkInnhold,
   Tekstbolk,
   Brev,
+  BlokkType,
 } from "./brevModell.js";
 import { Språk } from "./språk.js";
 import { LocaleString } from "@navikt/aap-sanity-schema-types/sanity-schema";
@@ -76,30 +76,37 @@ export function flettInnhold(
   return {
     sprak: innhold.language,
     overskrift: innhold.overskrift!,
-    avsnitt: (innhold.riktekst || []).map((riktekst) =>
-      mapRiktekst(riktekst, faktagrunnlag),
+    blokker: (innhold.riktekst || []).map((riktekst) =>
+      flettBlokk(riktekst, faktagrunnlag),
     ),
     kanRedigeres: innhold.kanRedigeres!,
     erFullstendig: innhold.erFullstendig!,
   };
 }
 
-function mapRiktekst(
+function flettBlokk(
   riktekst: SanityContent,
   faktagrunnlag: SanityFaktagrunnlag[],
-): Avsnitt {
+): Blokk {
   return {
-    tekst: (riktekst.children || [])?.map((child) =>
-      mapContentChild(child, faktagrunnlag),
+    innhold: (riktekst.children || [])?.map((child) =>
+      flettBlokkInnhold(child, faktagrunnlag),
     ),
-    listeInnrykk: riktekst.level,
+    type: mapBlokkType(riktekst),
   };
 }
 
-function mapContentChild(
+function mapBlokkType(riktekst: SanityContent): BlokkType {
+  if (riktekst.listItem === "bullet") {
+    return "liste";
+  }
+  return "avsnitt";
+}
+
+function flettBlokkInnhold(
   contentChild: ContentChild,
   faktagrunnlag: SanityFaktagrunnlag[],
-): Tekst | Faktagrunnlag {
+): BlokkInnhold {
   if (contentChild._type === "span") {
     return {
       tekst: contentChild.text!,

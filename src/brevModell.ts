@@ -10,17 +10,19 @@ export type Tekstbolk = {
 export type Innhold = {
   sprak?: string;
   overskrift: string;
-  avsnitt: Array<Avsnitt>;
+  blokker: Array<Blokk>;
   kanRedigeres: boolean;
   erFullstendig: boolean;
 };
 
-export type Avsnitt = {
-  tekst: Array<Tekst>;
-  listeInnrykk?: number;
+export type Blokk = {
+  innhold: Array<BlokkInnhold>;
+  type: BlokkType;
 };
 
-export type Tekst = FormattertTekst | Faktagrunnlag;
+export type BlokkType = "avsnitt" | "liste";
+
+export type BlokkInnhold = FormattertTekst | Faktagrunnlag;
 
 export type FormattertTekst = {
   tekst: string;
