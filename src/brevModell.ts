@@ -32,7 +32,11 @@ export type FormattertTekst = {
   type: "tekst";
 };
 
-export type Formattering = "understrek" | "kursiv" | "fet";
+export enum Formattering {
+  UNDERSTREK = "UNDERSTREK",
+  KURSIV = "KURSIV",
+  FET = "FET",
+}
 
 export type Faktagrunnlag = {
   visningsnavn: string;

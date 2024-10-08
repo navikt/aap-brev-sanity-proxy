@@ -127,11 +127,11 @@ function mapFormatterign(formattering: string[]): Formattering[] {
   return formattering.map((x) => {
     switch (x) {
       case "underline":
-        return "understrek";
+        return Formattering.UNDERSTREK;
       case "em":
-        return "kursiv";
+        return Formattering.KURSIV;
       case "strong":
-        return "fet";
+        return Formattering.FET;
       default:
         throw new Error(`Ukjent formattering ${x}`);
     }
