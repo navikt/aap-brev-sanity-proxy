@@ -74,7 +74,6 @@ export function flettInnhold(
   faktagrunnlag: SanityFaktagrunnlag[],
 ): Innhold {
   return {
-    sprak: innhold.language,
     overskrift: innhold.overskrift!,
     blokker: (innhold.riktekst || []).map((riktekst) =>
       flettBlokk(riktekst, faktagrunnlag),

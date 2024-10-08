@@ -8,7 +8,6 @@ export type Tekstbolk = {
 };
 
 export type Innhold = {
-  sprak?: string;
   overskrift: string;
   blokker: Array<Blokk>;
   kanRedigeres: boolean;
