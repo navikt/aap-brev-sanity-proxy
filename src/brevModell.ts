@@ -19,7 +19,10 @@ export type Blokk = {
   type: BlokkType;
 };
 
-export type BlokkType = "avsnitt" | "liste";
+export enum BlokkType {
+  AVSNITT = "AVSNITT",
+  LISTE = "LISTE",
+}
 
 export type BlokkInnhold = FormattertTekst | Faktagrunnlag;
 

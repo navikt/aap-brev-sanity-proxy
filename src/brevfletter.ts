@@ -1,18 +1,18 @@
 import {
   Brevtype as SanityBrevtype,
-  Tekstbolk as SanityTekstbolk,
-  Innhold as SanityInnhold,
   Content as SanityContent,
   Faktagrunnlag as SanityFaktagrunnlag,
+  Innhold as SanityInnhold,
+  Tekstbolk as SanityTekstbolk,
 } from "@navikt/aap-sanity-schema-types";
 import {
   Blokk,
-  Innhold,
-  Formattering,
   BlokkInnhold,
-  Tekstbolk,
-  Brev,
   BlokkType,
+  Brev,
+  Formattering,
+  Innhold,
+  Tekstbolk,
 } from "./brevModell.js";
 import { Språk } from "./språk.js";
 import { LocaleString } from "@navikt/aap-sanity-schema-types/sanity-schema";
@@ -97,9 +97,9 @@ function flettBlokk(
 
 function mapBlokkType(riktekst: SanityContent): BlokkType {
   if (riktekst.listItem === "bullet") {
-    return "liste";
+    return BlokkType.LISTE;
   }
-  return "avsnitt";
+  return BlokkType.AVSNITT;
 }
 
 function flettBlokkInnhold(
