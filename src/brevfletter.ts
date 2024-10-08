@@ -110,14 +110,14 @@ function flettBlokkInnhold(
     return {
       tekst: contentChild.text!,
       formattering: mapFormatterign(contentChild.marks || []),
-      type: "tekst",
+      type: "TEKST",
     };
   } else if (contentChild._type === "faktagrunnlag") {
     const fakta = findByRef(contentChild._ref, faktagrunnlag);
     return {
       visningsnavn: fakta.visningsnavn!,
       tekniskNavn: fakta.tekniskNavn!,
-      type: "faktagrunnlag",
+      type: "FAKTAGRUNNLAG",
     };
   }
   throw new Error(`Ukjent innholdstype ${contentChild._type}`);

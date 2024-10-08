@@ -29,7 +29,7 @@ export type BlokkInnhold = FormattertTekst | Faktagrunnlag;
 export type FormattertTekst = {
   tekst: string;
   formattering: Array<Formattering>;
-  type: "tekst";
+  type: "TEKST";
 };
 
 export enum Formattering {
@@ -41,5 +41,5 @@ export enum Formattering {
 export type Faktagrunnlag = {
   visningsnavn: string;
   tekniskNavn: string;
-  type: "faktagrunnlag";
+  type: "FAKTAGRUNNLAG";
 };
