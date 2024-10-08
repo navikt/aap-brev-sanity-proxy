@@ -50,7 +50,7 @@ export function flettTekstbolk(
     innhold:
       tekstbolk.innhold
         ?.map((innholdRef) => findByRef(innholdRef._ref, innhold))
-        ?.filter((innhold) => innhold.language === språk)
+        ?.filter((innhold) => innhold.language === språk.toLowerCase())
         ?.map((innhold) => flettInnhold(innhold, faktagrunnlag)) || [],
   };
 }
@@ -60,11 +60,11 @@ function mapLocaleString(
   språk: Språk,
 ): string | undefined {
   switch (språk) {
-    case Språk.nb:
+    case Språk.NB:
       return localeString.nb;
-    case Språk.nn:
+    case Språk.NN:
       return localeString.nn;
-    case Språk.en:
+    case Språk.EN:
       return localeString.en;
   }
 }

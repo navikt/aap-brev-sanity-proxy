@@ -1,5 +1,5 @@
 export enum Språk {
-  nb = "nb",
-  nn = "nn",
-  en = "en",
+  NB = "NB",
+  NN = "NN",
+  EN = "EN",
 }
