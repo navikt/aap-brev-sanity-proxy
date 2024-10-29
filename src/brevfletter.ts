@@ -45,6 +45,7 @@ export function flettTekstbolk(
   språk: Språk,
 ): Tekstbolk {
   return {
+    id: uuidv4(),
     overskrift: tekstbolk.overskrift
       ? mapLocaleString(tekstbolk.overskrift, språk)
       : undefined,

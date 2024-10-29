@@ -3,6 +3,7 @@ export type Brev = {
   tekstbolker: Array<Tekstbolk>;
 };
 export type Tekstbolk = {
+  id: string;
   overskrift?: string;
   innhold: Array<Innhold>;
 };
