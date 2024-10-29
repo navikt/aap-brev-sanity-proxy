@@ -8,6 +8,7 @@ export type Tekstbolk = {
 };
 
 export type Innhold = {
+  id: string;
   overskrift: string;
   blokker: Array<Blokk>;
   kanRedigeres: boolean;
@@ -15,6 +16,7 @@ export type Innhold = {
 };
 
 export type Blokk = {
+  id: string;
   innhold: Array<BlokkInnhold>;
   type: BlokkType;
 };
@@ -27,6 +29,7 @@ export enum BlokkType {
 export type BlokkInnhold = FormattertTekst | Faktagrunnlag;
 
 export type FormattertTekst = {
+  id: string;
   tekst: string;
   formattering: Array<Formattering>;
   type: "TEKST";
@@ -39,6 +42,7 @@ export enum Formattering {
 }
 
 export type Faktagrunnlag = {
+  id: string;
   visningsnavn: string;
   tekniskNavn: string;
   type: "FAKTAGRUNNLAG";

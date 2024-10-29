@@ -16,6 +16,7 @@ import {
 } from "./brevModell.js";
 import { Språk } from "./språk.js";
 import { LocaleString } from "@navikt/aap-sanity-schema-types/sanity-schema";
+import { v4 as uuidv4 } from "uuid";
 
 export function flettBrevtype(
   brevtype: SanityBrevtype,
@@ -74,6 +75,7 @@ export function flettInnhold(
   faktagrunnlag: SanityFaktagrunnlag[],
 ): Innhold {
   return {
+    id: uuidv4(),
     overskrift: innhold.overskrift!,
     blokker: (innhold.riktekst || []).map((riktekst) =>
       flettBlokk(riktekst, faktagrunnlag),
@@ -88,6 +90,7 @@ function flettBlokk(
   faktagrunnlag: SanityFaktagrunnlag[],
 ): Blokk {
   return {
+    id: uuidv4(),
     innhold: (riktekst.children || [])?.map((child) =>
       flettBlokkInnhold(child, faktagrunnlag),
     ),
@@ -108,6 +111,7 @@ function flettBlokkInnhold(
 ): BlokkInnhold {
   if (contentChild._type === "span") {
     return {
+      id: uuidv4(),
       tekst: contentChild.text!,
       formattering: mapFormatterign(contentChild.marks || []),
       type: "TEKST",
@@ -115,6 +119,7 @@ function flettBlokkInnhold(
   } else if (contentChild._type === "faktagrunnlag") {
     const fakta = findByRef(contentChild._ref, faktagrunnlag);
     return {
+      id: uuidv4(),
       visningsnavn: fakta.visningsnavn!,
       tekniskNavn: fakta.tekniskNavn!,
       type: "FAKTAGRUNNLAG",
