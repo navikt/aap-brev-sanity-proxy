@@ -78,9 +78,24 @@ export function flettInnhold(
   return {
     id: uuidv4(),
     overskrift: innhold.overskrift!,
-    blokker: (innhold.riktekst || []).map((riktekst) =>
-      flettBlokk(riktekst, faktagrunnlag),
-    ),
+    blokker: (innhold.riktekst || [])
+      .reduce((accumulator: SanityContent[], content: SanityContent) => {
+        if (accumulator.length === 0) return accumulator.concat(content);
+        if (
+          content.listItem === "bullet" &&
+          accumulator[accumulator.length - 1]?.listItem === "bullet"
+        ) {
+          const prevItem = accumulator[accumulator.length - 1];
+          accumulator[accumulator.length - 1] = {
+            ...prevItem,
+            // Støtter foreløpig ikke nestede lister, eller lister med ulik formatering etc.
+            children: prevItem.children?.concat(content.children ?? []),
+          };
+          return accumulator;
+        }
+        return accumulator.concat(content);
+      }, [])
+      .map((riktekst) => flettBlokk(riktekst, faktagrunnlag)),
     kanRedigeres: innhold.kanRedigeres!,
     erFullstendig: innhold.erFullstendig!,
   };
