@@ -9,7 +9,8 @@
     "dev": "NODE_ENV=development node dist/src/index.js",
     "build": "tsc -p tsconfig.json",
     "prepare": "husky",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "gentypes": "openapi-typescript http://localhost:8080/openapi.json -o src/schema.d.ts"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,css}": [
@@ -35,6 +36,7 @@
     "globals": "^15.11.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
+    "openapi-typescript": "^7.4.2",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
