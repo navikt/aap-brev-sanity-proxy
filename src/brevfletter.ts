@@ -57,7 +57,7 @@ export function flettTekstbolk(
   };
 }
 
-function mapLocaleString(
+export function mapLocaleString(
   localeString: LocaleString,
   språk: Språk,
 ): string | undefined {
