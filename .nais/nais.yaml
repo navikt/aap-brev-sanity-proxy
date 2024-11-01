@@ -29,6 +29,14 @@ spec:
     inbound:
       rules:
         - application: brev
+    outbound:
+      external:
+        - host: api.sanity.io
+        - host: 948n95rd.api.sanity.io
+        - host: apicdn.sanity.io
+        - host: 948n95rd.apicdn.sanity.io
+        - host: cdn.sanity.io
+
   observability:
     autoInstrumentation:
       enabled: true
