@@ -10,7 +10,7 @@ export type Tekstbolk = {
 
 export type Innhold = {
   id: string;
-  overskrift: string;
+  overskrift?: string;
   blokker: Array<Blokk>;
   kanRedigeres: boolean;
   erFullstendig: boolean;
@@ -23,8 +23,8 @@ export type Blokk = {
 };
 
 export enum BlokkType {
-  AVSNITT = "AVSNITT",
-  LISTE = "LISTE",
+  AVSNITT = 'AVSNITT',
+  LISTE = 'LISTE',
 }
 
 export type BlokkInnhold = FormattertTekst | Faktagrunnlag;
@@ -33,18 +33,18 @@ export type FormattertTekst = {
   id: string;
   tekst: string;
   formattering: Array<Formattering>;
-  type: "TEKST";
+  type: 'TEKST';
 };
 
 export enum Formattering {
-  UNDERSTREK = "UNDERSTREK",
-  KURSIV = "KURSIV",
-  FET = "FET",
+  UNDERSTREK = 'UNDERSTREK',
+  KURSIV = 'KURSIV',
+  FET = 'FET',
 }
 
 export type Faktagrunnlag = {
   id: string;
   visningsnavn: string;
   tekniskNavn: string;
-  type: "FAKTAGRUNNLAG";
+  type: 'FAKTAGRUNNLAG';
 };
