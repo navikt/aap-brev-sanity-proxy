@@ -160,6 +160,44 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/forhandsvis/{referanse}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description referanse */
+                    referanse: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": string;
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/drift/api/jobb/feilende": {
         parameters: {
             query?: never;
@@ -428,12 +466,12 @@ export interface components {
             brevtype: "INNVILGELSE" | "AVSLAG";
             /**
              * Format: date-time
-             * @example 2024-11-01T15:07:01.416296
+             * @example 2024-11-05T12:35:30.798366
              */
             oppdatert: string;
             /**
              * Format: date-time
-             * @example 2024-11-01T15:07:01.416296
+             * @example 2024-11-05T12:35:30.798366
              */
             opprettet: string;
             /** Format: uuid */
@@ -453,7 +491,7 @@ export interface components {
             /** Format: uuid */
             id: string;
             kanRedigeres: boolean;
-            overskrift: string;
+            overskrift?: string | null;
         };
         "no.nav.aap.brev.kontrakt.Tekstbolk": {
             /** Format: uuid */
@@ -475,7 +513,7 @@ export interface components {
             navn: string;
             /**
              * Format: date-time
-             * @example 2024-11-01T15:07:01.416296
+             * @example 2024-11-05T12:35:30.798366
              */
             "planlagtKj\u00F8retidspunkt": string;
             /** @enum {string} */

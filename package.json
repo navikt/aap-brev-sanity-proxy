@@ -10,7 +10,7 @@
     "build": "tsc -p tsconfig.json",
     "prepare": "husky",
     "test": "vitest --run",
-    "gentypes": "openapi-typescript http://localhost:8080/openapi.json -o src/schema.d.ts"
+    "gentypes": "openapi-typescript http://localhost:8080/openapi.json -o src/types/schema.d.ts"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,css}": [
