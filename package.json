@@ -20,7 +20,7 @@
   },
   "prettier": "@navikt/aap-felles-prettier",
   "dependencies": {
-    "@navikt/aap-felles-utils": "^2.0.8",
+    "@navikt/aap-felles-utils": "^2.0.19",
     "@navikt/aap-sanity-schema-types": "^0.0.3",
     "@navikt/oasis": "^3.4.0",
     "@sanity/client": "^6.22.4",
