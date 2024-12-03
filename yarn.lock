@@ -1026,14 +1026,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/client@npm:^6.22.4":
-  version: 6.22.4
-  resolution: "@sanity/client@npm:6.22.4"
+"@sanity/client@npm:^6.23.0":
+  version: 6.23.0
+  resolution: "@sanity/client@npm:6.23.0"
   dependencies:
     "@sanity/eventsource": "npm:^5.0.2"
     get-it: "npm:^8.6.5"
     rxjs: "npm:^7.0.0"
-  checksum: 10c0/6e758d5074f100e398633d5c07eb4a13510d84a109f30ed756535f14565f4bf87aebe55c524502d6a3a943cec08af097e495fba7e500e83d96456465d8c41868
+  checksum: 10c0/3137053ad0b13cb771de9ec6ceb275720008616f10910661749bf65310a8b9767d28be7b596ffd3041049ab359ff18cd7ecb11e1acb4d6dd8ac155ef51e9b9d2
   languageName: node
   linkType: hard
 
@@ -1466,7 +1466,7 @@ __metadata:
     "@navikt/aap-felles-utils": "npm:^2.0.28"
     "@navikt/aap-sanity-schema-types": "npm:^0.0.3"
     "@navikt/oasis": "npm:^3.4.0"
-    "@sanity/client": "npm:^6.22.4"
+    "@sanity/client": "npm:^6.23.0"
     "@types/express": "npm:^4.17.21"
     dotenv: "npm:^16.4.5"
     eslint: "npm:^9.14.0"
