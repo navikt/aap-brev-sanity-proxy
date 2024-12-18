@@ -4,528 +4,600 @@
  */
 
 export interface paths {
-    "/api/bestill": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["no.nav.aap.brev.kontrakt.BestillBrevRequest"];
-                };
-            };
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["no.nav.aap.brev.kontrakt.BestillBrevResponse"];
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+  '/api/bestill': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/bestilling/{referanse}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    get?: never;
+    put?: never;
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': components['schemas']['no.nav.aap.brev.kontrakt.BestillBrevRequest'];
         };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    /** @description referanse */
-                    referanse: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["no.nav.aap.brev.kontrakt.BrevbestillingResponse"];
-                    };
-                };
-            };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['no.nav.aap.brev.kontrakt.BestillBrevResponse'];
+          };
         };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
     };
-    "/api/bestilling/{referanse}/oppdater": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    /** @description referanse */
-                    referanse: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["no.nav.aap.brev.kontrakt.Brev"];
-                };
-            };
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/bestilling/{referanse}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/api/ferdigstill": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          /** @description referanse */
+          referanse: string;
         };
-        get?: never;
-        put?: never;
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: {
-                content: {
-                    "application/json": components["schemas"]["no.nav.aap.brev.kontrakt.FerdigstillBrevRequest"];
-                };
-            };
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": string;
-                    };
-                };
-            };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['no.nav.aap.brev.kontrakt.BrevbestillingResponse'];
+          };
         };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
     };
-    "/api/forhandsvis/{referanse}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    /** @description referanse */
-                    referanse: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": string;
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/bestilling/{referanse}/oppdater': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/drift/api/jobb/feilende": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    get?: never;
+    put: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          /** @description referanse */
+          referanse: string;
         };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["no.nav.aap.motor.api.JobbInfoDto"][];
-                    };
-                };
-            };
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': components['schemas']['no.nav.aap.brev.kontrakt.Brev'];
         };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content?: never;
+        };
+      };
     };
-    "/drift/api/jobb/planlagte-jobber": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["no.nav.aap.motor.api.JobbInfoDto"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/ferdigstill': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/drift/api/jobb/rekjor/{jobbId}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    get?: never;
+    put?: never;
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': components['schemas']['no.nav.aap.brev.kontrakt.FerdigstillBrevRequest'];
         };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    /** @description ID */
-                    jobbId: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": string;
-                    };
-                };
-            };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': string;
+          };
         };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
     };
-    "/drift/api/jobb/avbryt/{jobbId}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    /** @description ID */
-                    jobbId: number;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": string;
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/dokumentinnhenting/journalfor-behandler-bestilling': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/drift/api/jobb/rekjorAlleFeilede": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    get?: never;
+    put?: never;
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': components['schemas']['no.nav.aap.brev.kontrakt.Journalf\u00F8rBehandlerBestillingRequest'];
         };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": string;
-                    };
-                };
-            };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['no.nav.aap.brev.kontrakt.Journalf\u00F8rBehandlerBestillingResponse'];
+          };
         };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+      };
     };
-    "/drift/api/jobb/sisteKj\u00F8rte": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["no.nav.aap.motor.api.JobbInfoDto"][];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/api/dokumentinnhenting/ekspeder-journalpost-behandler-bestilling': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    get?: never;
+    put?: never;
+    post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: {
+        content: {
+          'application/json': components['schemas']['no.nav.aap.brev.kontrakt.EkspederBehandlerBestillingRequest'];
+        };
+      };
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': string;
+          };
+        };
+      };
+    };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/drift/api/jobb/feilende': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['no.nav.aap.motor.api.JobbInfoDto'][];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/drift/api/jobb/planlagte-jobber': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['no.nav.aap.motor.api.JobbInfoDto'][];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/drift/api/jobb/rekjor/{jobbId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          /** @description ID */
+          jobbId: number;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': string;
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/drift/api/jobb/avbryt/{jobbId}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path: {
+          /** @description ID */
+          jobbId: number;
+        };
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': string;
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/drift/api/jobb/rekjorAlleFeilede': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': string;
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/drift/api/jobb/sisteKj\u00F8rte': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
+      responses: {
+        /** @description OK */
+        200: {
+          headers: {
+            [name: string]: unknown;
+          };
+          content: {
+            'application/json': components['schemas']['no.nav.aap.motor.api.JobbInfoDto'][];
+          };
+        };
+      };
+    };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: {
-        "no.nav.aap.brev.kontrakt.BestillBrevRequest": {
-            /** Format: uuid */
-            behandlingReferanse: string;
-            /** @enum {string} */
-            brevtype: "INNVILGELSE" | "AVSLAG";
-            /** @enum {string} */
-            sprak: "EN" | "NB" | "NN";
-        };
-        "no.nav.aap.brev.kontrakt.BestillBrevResponse": {
-            /** Format: uuid */
-            referanse: string;
-        };
-        "no.nav.aap.brev.kontrakt.Blokk": {
-            /** Format: uuid */
-            id: string;
-            innhold: components["schemas"]["no.nav.aap.brev.kontrakt.BlokkInnhold"][];
-            /** @enum {string} */
-            type: "AVSNITT" | "LISTE";
-        };
-        "no.nav.aap.brev.kontrakt.BlokkInnhold": components["schemas"]["no.nav.aap.brev.kontrakt.BlokkInnhold.Faktagrunnlag"] | components["schemas"]["no.nav.aap.brev.kontrakt.BlokkInnhold.FormattertTekst"];
-        "no.nav.aap.brev.kontrakt.BlokkInnhold.Faktagrunnlag": {
-            /** Format: uuid */
-            id: string;
-            tekniskNavn: string;
-            visningsnavn: string;
-            /** @enum {string} */
-            type: "TEKST" | "FAKTAGRUNNLAG";
-        };
-        "no.nav.aap.brev.kontrakt.BlokkInnhold.FormattertTekst": {
-            formattering: ("UNDERSTREK" | "KURSIV" | "FET")[];
-            /** Format: uuid */
-            id: string;
-            tekst: string;
-            /** @enum {string} */
-            type: "TEKST" | "FAKTAGRUNNLAG";
-        };
-        "no.nav.aap.brev.kontrakt.Brev": {
-            overskrift?: string | null;
-            tekstbolker: components["schemas"]["no.nav.aap.brev.kontrakt.Tekstbolk"][];
-        };
-        "no.nav.aap.brev.kontrakt.BrevbestillingResponse": {
-            /** Format: uuid */
-            behandlingReferanse: string;
-            brev?: components["schemas"]["no.nav.aap.brev.kontrakt.Brev"];
-            /** @enum {string} */
-            brevtype: "INNVILGELSE" | "AVSLAG";
-            /**
-             * Format: date-time
-             * @example 2024-11-05T12:35:30.798366
-             */
-            oppdatert: string;
-            /**
-             * Format: date-time
-             * @example 2024-11-05T12:35:30.798366
-             */
-            opprettet: string;
-            /** Format: uuid */
-            referanse: string;
-            /** @enum {string} */
-            "spr\u00E5k": "EN" | "NB" | "NN";
-            /** @enum {string} */
-            status: "REGISTRERT" | "UNDER_ARBEID" | "FERDIGSTILT";
-        };
-        "no.nav.aap.brev.kontrakt.FerdigstillBrevRequest": {
-            /** Format: uuid */
-            referanse: string;
-        };
-        "no.nav.aap.brev.kontrakt.Innhold": {
-            blokker: components["schemas"]["no.nav.aap.brev.kontrakt.Blokk"][];
-            erFullstendig: boolean;
-            /** Format: uuid */
-            id: string;
-            kanRedigeres: boolean;
-            overskrift?: string | null;
-        };
-        "no.nav.aap.brev.kontrakt.Tekstbolk": {
-            /** Format: uuid */
-            id: string;
-            innhold: components["schemas"]["no.nav.aap.brev.kontrakt.Innhold"][];
-            overskrift?: string | null;
-        };
-        "no.nav.aap.motor.api.JobbInfoDto": {
-            /** Format: int32 */
-            "antallFeilendeFors\u00F8k": number;
-            beskrivelse: string;
-            feilmelding?: string | null;
-            /** Format: int64 */
-            id: number;
-            /** @description Key type: kotlin.String */
-            metadata: {
-                [key: string]: string;
-            };
-            navn: string;
-            /**
-             * Format: date-time
-             * @example 2024-11-05T12:35:30.798366
-             */
-            "planlagtKj\u00F8retidspunkt": string;
-            /** @enum {string} */
-            status: "KLAR" | "PLUKKET" | "FERDIG" | "FEILET" | "AVBRUTT";
-            type: string;
-        };
+  schemas: {
+    'no.nav.aap.brev.kontrakt.BestillBrevRequest': {
+      /** Format: uuid */
+      behandlingReferanse: string;
+      /** @enum {string} */
+      brevtype: 'INNVILGELSE' | 'AVSLAG' | 'VARSEL_OM_BESTILLING';
+      saksnummer: string;
+      /** @enum {string} */
+      sprak: 'EN' | 'NB' | 'NN';
+      vedlegg: components['schemas']['no.nav.aap.brev.kontrakt.Vedlegg'][];
     };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+    'no.nav.aap.brev.kontrakt.BestillBrevResponse': {
+      /** Format: uuid */
+      referanse: string;
+    };
+    'no.nav.aap.brev.kontrakt.Blokk': {
+      /** Format: uuid */
+      id: string;
+      innhold: components['schemas']['no.nav.aap.brev.kontrakt.BlokkInnhold'][];
+      /** @enum {string} */
+      type: 'AVSNITT' | 'LISTE';
+    };
+    'no.nav.aap.brev.kontrakt.BlokkInnhold':
+      | components['schemas']['no.nav.aap.brev.kontrakt.BlokkInnhold.Faktagrunnlag']
+      | components['schemas']['no.nav.aap.brev.kontrakt.BlokkInnhold.FormattertTekst'];
+    'no.nav.aap.brev.kontrakt.BlokkInnhold.Faktagrunnlag': {
+      /** Format: uuid */
+      id: string;
+      tekniskNavn: string;
+      visningsnavn: string;
+      /** @enum {string} */
+      type: 'TEKST' | 'FAKTAGRUNNLAG';
+    };
+    'no.nav.aap.brev.kontrakt.BlokkInnhold.FormattertTekst': {
+      formattering: ('UNDERSTREK' | 'KURSIV' | 'FET')[];
+      /** Format: uuid */
+      id: string;
+      tekst: string;
+      /** @enum {string} */
+      type: 'TEKST' | 'FAKTAGRUNNLAG';
+    };
+    'no.nav.aap.brev.kontrakt.Brev': {
+      overskrift?: string | null;
+      tekstbolker: components['schemas']['no.nav.aap.brev.kontrakt.Tekstbolk'][];
+    };
+    'no.nav.aap.brev.kontrakt.BrevbestillingResponse': {
+      /** Format: uuid */
+      behandlingReferanse: string;
+      brev?: components['schemas']['no.nav.aap.brev.kontrakt.Brev'];
+      /** @enum {string} */
+      brevtype: 'INNVILGELSE' | 'AVSLAG' | 'VARSEL_OM_BESTILLING';
+      /**
+       * Format: date-time
+       * @example 2024-12-18T11:21:02.808847
+       */
+      oppdatert: string;
+      /**
+       * Format: date-time
+       * @example 2024-12-18T11:21:02.808847
+       */
+      opprettet: string;
+      /** Format: uuid */
+      referanse: string;
+      /** @enum {string} */
+      'spr\u00E5k': 'EN' | 'NB' | 'NN';
+      /** @enum {string} */
+      status: 'REGISTRERT' | 'UNDER_ARBEID' | 'FERDIGSTILT';
+    };
+    'no.nav.aap.brev.kontrakt.EkspederBehandlerBestillingRequest': {
+      journalpostId: string;
+    };
+    'no.nav.aap.brev.kontrakt.FerdigstillBrevRequest': {
+      /** Format: uuid */
+      referanse: string;
+    };
+    'no.nav.aap.brev.kontrakt.Innhold': {
+      blokker: components['schemas']['no.nav.aap.brev.kontrakt.Blokk'][];
+      erFullstendig: boolean;
+      /** Format: uuid */
+      id: string;
+      kanRedigeres: boolean;
+      overskrift?: string | null;
+    };
+    'no.nav.aap.brev.kontrakt.Journalf\u00F8rBehandlerBestillingRequest': {
+      brevAvsnitt: string[];
+      brevkode: string;
+      brukerFnr: string;
+      /**
+       * Format: date
+       * @example 2024-12-18
+       */
+      dato: string;
+      /** Format: uuid */
+      eksternReferanseId: string;
+      mottakerHprnr: string;
+      mottakerNavn: string;
+      saksnummer: string;
+      tittel: string;
+    };
+    'no.nav.aap.brev.kontrakt.Journalf\u00F8rBehandlerBestillingResponse': {
+      dokumenter: string[];
+      journalpostFerdigstilt: boolean;
+      journalpostId: string;
+    };
+    'no.nav.aap.brev.kontrakt.Tekstbolk': {
+      /** Format: uuid */
+      id: string;
+      innhold: components['schemas']['no.nav.aap.brev.kontrakt.Innhold'][];
+      overskrift?: string | null;
+    };
+    'no.nav.aap.brev.kontrakt.Vedlegg': {
+      dokumentInfoId: string;
+      journalpostId: string;
+    };
+    'no.nav.aap.motor.api.JobbInfoDto': {
+      /** Format: int32 */
+      'antallFeilendeFors\u00F8k': number;
+      beskrivelse: string;
+      feilmelding?: string | null;
+      /** Format: int64 */
+      id: number;
+      /** @description Key type: kotlin.String */
+      metadata: {
+        [key: string]: string;
+      };
+      navn: string;
+      /**
+       * Format: date-time
+       * @example 2024-12-18T11:21:02.808847
+       */
+      'planlagtKj\u00F8retidspunkt': string;
+      /** @enum {string} */
+      status: 'KLAR' | 'PLUKKET' | 'FERDIG' | 'FEILET' | 'AVBRUTT';
+      type: string;
+    };
+  };
+  responses: never;
+  parameters: never;
+  requestBodies: never;
+  headers: never;
+  pathItems: never;
 }
 export type $defs = Record<string, never>;
 export type operations = Record<string, never>;
