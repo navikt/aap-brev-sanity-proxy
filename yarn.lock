@@ -692,13 +692,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aap-felles-prettier@npm:^2.0.8":
-  version: 2.0.8
-  resolution: "@navikt/aap-felles-prettier@npm:2.0.8::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F2.0.8%2F320588589c4f1bd7dbbf9c3927298b436b09a01f"
+"@navikt/aap-felles-prettier@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@navikt/aap-felles-prettier@npm:4.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F4.0.1%2Fb8de49826f54559464d9b81161c72b0266ea2f37"
   dependencies:
     "@trivago/prettier-plugin-sort-imports": "npm:^4.3.0"
     prettier: "npm:^3.3.3"
-  checksum: 10c0/f5c68da137e07964d8805af2ddc89fc9ebcab2144cef25b0b1a8b9003580e3f1cca002c335b790bf1c8708d0c90783eef58814d67bd85ac99441e583a845eedb
+  checksum: 10c0/a70239de0f15eab650502dfc3d64ddb4e04dbc6238c0bec0717e1a3442f48de10c27986f251098dd323bac65ab9d49d2f04720c73f9b31d6bb48637832e73d29
   languageName: node
   linkType: hard
 
@@ -1462,7 +1462,7 @@ __metadata:
   resolution: "aap-sanity@workspace:."
   dependencies:
     "@eslint/js": "npm:^9.14.0"
-    "@navikt/aap-felles-prettier": "npm:^2.0.8"
+    "@navikt/aap-felles-prettier": "npm:^4.0.1"
     "@navikt/aap-felles-utils": "npm:^2.0.28"
     "@navikt/aap-sanity-schema-types": "npm:^0.0.3"
     "@navikt/oasis": "npm:^3.4.0"
