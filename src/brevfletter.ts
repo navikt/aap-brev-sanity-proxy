@@ -19,6 +19,7 @@ export function flettBrevtype(
 ): Brev {
   return {
     overskrift: brevtype.overskrift ? mapLocaleString(brevtype.overskrift, språk) : undefined,
+    journalpostTittel: brevtype.journalpostTittel ? mapLocaleString(brevtype.journalpostTittel, språk) : undefined,
     tekstbolker:
       brevtype.tekstbolker
         ?.map((tekstbolkRef) => findByRef(tekstbolkRef._ref, tekstbolker))

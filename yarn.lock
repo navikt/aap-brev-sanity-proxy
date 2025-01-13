@@ -718,10 +718,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aap-sanity-schema-types@npm:^0.0.3":
-  version: 0.0.3
-  resolution: "@navikt/aap-sanity-schema-types@npm:0.0.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-sanity-schema-types%2F0.0.3%2F897c96bd8903aedccd83a4828e938ebee2a04947"
-  checksum: 10c0/86c586307030b84d6e213532c149bb1c59a3391045bb1497c5ac318906da926df0d14bcf7a6b2e0ea75785c9da097420b6fe537b345b1d7bff8c9f3928d5b9ff
+"@navikt/aap-sanity-schema-types@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@navikt/aap-sanity-schema-types@npm:0.0.5::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-sanity-schema-types%2F0.0.5%2F2bf842f42a9f00a66079d7f88e4eafa9d93c2a01"
+  checksum: 10c0/d7cf0411f49d1930e5575febdc88e7e6574d5e859b39efc0124679b688d0edc68a9315545f0d5bc998963d53bf61f1de45de9325e4ec4788f4ba32a0fe73e395
   languageName: node
   linkType: hard
 
@@ -1464,7 +1464,7 @@ __metadata:
     "@eslint/js": "npm:^9.14.0"
     "@navikt/aap-felles-prettier": "npm:^2.0.8"
     "@navikt/aap-felles-utils": "npm:^2.0.28"
-    "@navikt/aap-sanity-schema-types": "npm:^0.0.3"
+    "@navikt/aap-sanity-schema-types": "npm:^0.0.5"
     "@navikt/oasis": "npm:^3.4.0"
     "@sanity/client": "npm:^6.24.1"
     "@types/express": "npm:^4.17.21"
