@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
-    "@navikt/aap-felles-prettier": "^2.0.8",
+    "@navikt/aap-felles-prettier": "^5.0.0",
     "@types/express": "^4.17.21",
     "eslint": "^9.14.0",
     "globals": "^15.12.0",
