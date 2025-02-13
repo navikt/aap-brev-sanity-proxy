@@ -1,4 +1,4 @@
-FROM gcr.io/distroless/nodejs20-debian12@sha256:a6c0e95f6f70fb21586757a846d8b8d287609f2414bcc2399895adb055768648
+FROM gcr.io/distroless/nodejs20-debian12@sha256:03d681b39b9251008fa2ba8de0f74cb4d909d4ef95f3f66090da29536c3b5cae
 
 ENV NODE_ENV production
 
