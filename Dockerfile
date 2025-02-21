@@ -2,8 +2,6 @@ FROM gcr.io/distroless/nodejs20-debian12@sha256:03d681b39b9251008fa2ba8de0f74cb4
 
 ENV NODE_ENV production
 
-COPY dist ./dist
-COPY node_modules ./node_modules
-COPY package.json .
+COPY dist/index.cjs .
 
-CMD ["dist/src/index.js"]
+CMD ["index.cjs"]
