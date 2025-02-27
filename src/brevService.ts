@@ -23,4 +23,5 @@ const brevtypeTilSanityId = {
   [Brevtype.AVSLAG]: '540d061b-0772-4e78-b078-40483c0192f2',
   [Brevtype.VARSEL_OM_BESTILLING]: 'c16dc9a8-d41c-4a73-bc79-af95902d40c3',
   [Brevtype.FORHÅNDSVARSEL_BRUDD_AKTIVITETSPLIKT]: '1da6c37e-f9d4-46ca-8bc0-81430c91b84d',
+  [Brevtype.FORVALTNINGSMELDING]: '7a5b29f5-0fe5-4ce4-91df-6f03adeb0081',
 };
