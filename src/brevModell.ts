@@ -1,5 +1,6 @@
 export type Brev = {
   overskrift?: string;
+  journalpostTittel?: string;
   tekstbolker: Array<Tekstbolk>;
 };
 export type Tekstbolk = {
