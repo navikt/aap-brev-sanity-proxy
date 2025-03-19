@@ -59,3 +59,18 @@ jobs:
           CLUSTER: dev-gcp
           RESOURCE: .nais/nais.yaml
           IMAGE: ${{ needs.build-and-push.outputs.image }}
+
+  deploy-prod:
+    needs: [build-and-push, deploy-dev]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nais/deploy/actions/deploy@v2
+        env:
+          PRINT_PAYLOAD: true
+          CLUSTER: prod-gcp
+          RESOURCE: .nais/nais.yaml
+          IMAGE: ${{ needs.build-and-push.outputs.image }}
