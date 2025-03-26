@@ -5,8 +5,8 @@
   "private": true,
   "main": "dist/index.js",
   "scripts": {
-    "start": "NODE_ENV=production node dist/src/index.js",
-    "dev": "NODE_ENV=development node dist/src/index.js",
+    "start": "NODE_ENV=production node dist/index.cjs",
+    "dev": "NODE_ENV=development node dist/index.cjs",
     "build": "esbuild src/index.ts --bundle --outfile=dist/index.cjs --platform=node",
     "prepare": "husky",
     "test": "vitest --run",

@@ -1,12 +1,6 @@
-import { createClient } from "@sanity/client";
+import { ClientPerspective, createClient } from '@sanity/client';
 
-import {
-  apiVersion,
-  dataset,
-  projectId,
-  useCdn,
-  sanityReadToken,
-} from "./env.js";
+import { apiVersion, dataset, projectId, useCdn, sanityReadToken, perspective } from './env.js';
 
 export const client = createClient({
   projectId,
@@ -14,4 +8,5 @@ export const client = createClient({
   useCdn,
   apiVersion,
   token: sanityReadToken,
+  perspective: perspective as ClientPerspective,
 });

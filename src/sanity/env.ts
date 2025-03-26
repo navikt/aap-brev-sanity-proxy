@@ -4,6 +4,11 @@ export const dataset = assertValue(process.env.SANITY_DATASET, 'Missing environm
 
 export const projectId = assertValue(process.env.SANITY_PROJECT_ID, 'Missing environment variable: SANITY_PROJECT_ID');
 
+export const perspective = assertValue(
+  process.env.SANITY_PERSPECTIVE,
+  'Missing environment variable: SANITY_PERSPECTIVE'
+);
+
 export const sanityReadToken = assertValue(
   process.env.SANITY_API_READ_TOKEN,
   'Missing environment variable: SANITY_API_READ_TOKEN'

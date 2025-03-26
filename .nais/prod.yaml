@@ -51,5 +51,7 @@ spec:
       value: production
     - name: SANITY_PROJECT_ID
       value: 948n95rd
+    - name: SANITY_PERSPECTIVE
+      value: published
   envFrom:
     - secret: sanity-api-read-token

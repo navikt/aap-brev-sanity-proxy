@@ -1,0 +1,57 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: brev-sanity-proxy
+  namespace: aap
+  labels:
+    team: aap
+    sub: brev-sanity-proxy
+spec:
+  image: {{image}}
+  replicas:
+    disableAutoScaling: true
+    max: 1
+    min: 1
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: 100m
+    limits:
+      memory: 128Mi
+  liveness:
+    path: /internal/health/isAlive
+  readiness:
+    path: /internal/health/isReady
+  azure:
+    application:
+      enabled: true
+  accessPolicy:
+    inbound:
+      rules:
+        - application: brev
+    outbound:
+      external:
+        - host: api.sanity.io
+        - host: 948n95rd.api.sanity.io
+        - host: apicdn.sanity.io
+        - host: 948n95rd.apicdn.sanity.io
+        - host: cdn.sanity.io
+
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: nodejs
+    logging:
+      destinations:
+        - id: elastic
+        - id: loki
+
+  env:
+    - name: SANITY_DATASET
+      value: production
+    - name: SANITY_PROJECT_ID
+      value: 948n95rd
+    - name: SANITY_PERSPECTIVE
+      value: drafts
+  envFrom:
+    - secret: sanity-api-read-token
