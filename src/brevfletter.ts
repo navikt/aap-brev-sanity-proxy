@@ -18,6 +18,7 @@ export function flettBrevtype(
   språk: Språk
 ): Brev {
   return {
+    kanSendesAutomatisk: brevtype.kanSendesAutomatisk || false,
     overskrift: brevtype.overskrift ? mapLocaleString(brevtype.overskrift, språk) : undefined,
     journalpostTittel: brevtype.journalpostTittel ? mapLocaleString(brevtype.journalpostTittel, språk) : undefined,
     tekstbolker:

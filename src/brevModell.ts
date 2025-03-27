@@ -2,6 +2,7 @@ export type Brev = {
   overskrift?: string;
   journalpostTittel?: string;
   tekstbolker: Array<Tekstbolk>;
+  kanSendesAutomatisk: boolean;
 };
 export type Tekstbolk = {
   id: string;
