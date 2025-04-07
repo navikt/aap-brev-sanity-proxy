@@ -25,6 +25,8 @@ spec:
   azure:
     application:
       enabled: true
+  ingresses:
+    - 'https://aap-brev-sanity-proxy.ansatt.dev.nav.no'
   accessPolicy:
     inbound:
       rules:
