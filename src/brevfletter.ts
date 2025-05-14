@@ -20,6 +20,7 @@ export function flettBrevtype(
   return {
     kanSendesAutomatisk: brevtype.kanSendesAutomatisk || false,
     overskrift: brevtype.overskrift ? mapLocaleString(brevtype.overskrift, språk) : undefined,
+    kanOverstyreBrevtittel: brevtype.kanOverstyreBrevtittel,
     journalpostTittel: brevtype.journalpostTittel ? mapLocaleString(brevtype.journalpostTittel, språk) : undefined,
     tekstbolker:
       brevtype.tekstbolker
