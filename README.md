@@ -10,6 +10,8 @@ SANITY_PROJECT_ID="948n95rd"
 SANITY_API_READ_TOKEN="<ditt token her>"
 ```
 
+Kjør deretter `yarn install && yarn build && yarn dev`
+
 ### Testing av bygg lokalt
 
 `yarn install && yarn build`
