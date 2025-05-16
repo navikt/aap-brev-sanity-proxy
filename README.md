@@ -6,6 +6,7 @@ Lag en `.env` fil og legg inn følgende
 ```
 SANITY_DATASET="production"
 SANITY_PROJECT_ID="948n95rd"
+SANITY_PERSPECTIVE="published" for prod versjon/"drafts" for dev versjon
 
 SANITY_API_READ_TOKEN="<ditt token her>"
 ```
