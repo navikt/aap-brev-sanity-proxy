@@ -25,4 +25,7 @@ const brevtypeTilSanityId = {
   [Brevtype.FORHÅNDSVARSEL_BRUDD_AKTIVITETSPLIKT]: '1da6c37e-f9d4-46ca-8bc0-81430c91b84d',
   [Brevtype.FORVALTNINGSMELDING]: '7a5b29f5-0fe5-4ce4-91df-6f03adeb0081',
   [Brevtype.VEDTAK_ENDRING]: '34c2c2ad-2d93-4989-96e5-1701c0313542',
+  [Brevtype.KLAGE_AVVIST]: '299aea66-6d90-4b81-b217-cca24fab359a',
+  [Brevtype.KLAGE_OPPRETTHOLDELSE]: 'c312cb2e-46f6-4296-97a9-c05b2309fcb5',
+  [Brevtype.KLAGE_TRUKKET]: 'dc797205-0fd9-4c3b-87f1-03f3ad345fab',
 };
