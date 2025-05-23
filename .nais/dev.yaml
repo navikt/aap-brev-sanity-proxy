@@ -27,6 +27,7 @@ spec:
       enabled: true
   ingresses:
     - 'https://aap-brev-sanity-proxy.ansatt.dev.nav.no'
+    - 'https://aap-brev-sanity-proxy.intern.dev.nav.no'
   accessPolicy:
     inbound:
       rules:
