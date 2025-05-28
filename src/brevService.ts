@@ -28,4 +28,5 @@ const brevtypeTilSanityId = {
   [Brevtype.KLAGE_AVVIST]: '299aea66-6d90-4b81-b217-cca24fab359a',
   [Brevtype.KLAGE_OPPRETTHOLDELSE]: 'c312cb2e-46f6-4296-97a9-c05b2309fcb5',
   [Brevtype.KLAGE_TRUKKET]: 'dc797205-0fd9-4c3b-87f1-03f3ad345fab',
+  [Brevtype.FORHÅNDSVARSEL_KLAGE_FORMKRAV]: '299aea66-6d90-4b81-b217-cca24fab359a' // TODO: Map til riktig brev
 };
