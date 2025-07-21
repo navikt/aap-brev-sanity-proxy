@@ -949,6 +949,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/oasis@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "@navikt/oasis@npm:3.8.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Foasis%2F3.8.0%2Ffc6862d934adfbefa382220614af18160688cd1e"
+  dependencies:
+    jose: "npm:^5.2.3"
+    openid-client: "npm:^5.6.5"
+    prom-client: "npm:^15.1.0"
+  checksum: 10c0/225e8e26f3651a795c75c2de39cec0b4d9231b2adfc60ec9dd6ed28a94c1746dfffc0ca6aed0eaeeee2f4d782702345a1d94f32be7bad8f54488a59d550509ae
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:15.2.4":
   version: 15.2.4
   resolution: "@next/env@npm:15.2.4"
@@ -1717,7 +1728,7 @@ __metadata:
     "@navikt/aap-felles-prettier": "npm:^5.3.0"
     "@navikt/aap-felles-utils": "npm:^5.3.0"
     "@navikt/aap-sanity-schema-types": "npm:^0.0.6"
-    "@navikt/oasis": "npm:^3.4.0"
+    "@navikt/oasis": "npm:^3.8.0"
     "@sanity/client": "npm:^6.24.1"
     "@types/express": "npm:^4.17.21"
     dotenv: "npm:^16.4.5"
