@@ -25,7 +25,7 @@
     "@navikt/oasis": "^3.8.0",
     "@sanity/client": "^6.24.1",
     "dotenv": "^16.4.5",
-    "express": "^4.21.1",
+    "express": "^5.1.0",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
