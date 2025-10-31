@@ -26,7 +26,7 @@ const brevtypeTilSanityId = {
   [Brevtype.VARSEL_OM_BESTILLING]: 'c16dc9a8-d41c-4a73-bc79-af95902d40c3',
   [Brevtype.FORHÅNDSVARSEL_BRUDD_AKTIVITETSPLIKT]: '1da6c37e-f9d4-46ca-8bc0-81430c91b84d',
   [Brevtype.VEDTAK_11_7]: '49d079b8-bdad-42f8-9e0b-a39b2674baad',
-  [Brevtype.VEDTAK_11_9]: 'd823bd4a-c1fc-4574-91c0-7c5d6e9052e1',
+  [Brevtype.VEDTAK_11_9]: 'ee6ae0d1-d3d3-419c-9ecc-145b38814cf6',
   [Brevtype.FORVALTNINGSMELDING]: '7a5b29f5-0fe5-4ce4-91df-6f03adeb0081',
   [Brevtype.VEDTAK_ENDRING]: '34c2c2ad-2d93-4989-96e5-1701c0313542',
   [Brevtype.KLAGE_AVVIST]: '299aea66-6d90-4b81-b217-cca24fab359a',
