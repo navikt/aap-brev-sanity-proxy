@@ -11,7 +11,7 @@ SANITY_PERSPECTIVE="published" for prod versjon/"drafts" for dev versjon
 SANITY_API_READ_TOKEN="<ditt token her>"
 ```
 
-Kjør deretter `yarn install && yarn build && yarn dev`
+Kjør deretter `yarn install && yarn dev`
 
 ### Testing av bygg lokalt
 
