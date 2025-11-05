@@ -7,7 +7,7 @@
   "scripts": {
     "start": "NODE_ENV=production node dist/index.cjs",
     "dev": "nodemon -e ts,tsx --exec \"yarn build && NODE_ENV=development node dist/index.cjs\"",
-    "build": "esbuild src/index.ts --bundle --outfile=dist/index.cjs --platform=node",
+    "build": "esbuild src/index.ts --bundle --loader:.png=dataurl --outfile=dist/index.cjs --platform=node",
     "prepare": "husky",
     "test": "vitest --run",
     "gentypes": "openapi-typescript http://localhost:8082/openapi.json -o src/types/schema.d.ts"

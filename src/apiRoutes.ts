@@ -2,7 +2,8 @@ import express from 'express';
 import { Språk } from './språk.js';
 import { Brevtype } from './brevtype.js';
 import { flettBrev } from './brevService.js';
-import { portableTextToHtml } from './components/PortableTextToHtml';
+import { brevmalToPdf } from './pdfService';
+import { GenererPdfRequest } from './pdfModell';
 
 const router = express.Router();
 
@@ -27,10 +28,13 @@ router.get('/mal', async (req, res, next) => {
 
 router.post('/pdf', async (req, res, next) => {
   try {
-    const json = req.body;
-    res.send({ message: { key: portableTextToHtml(json) } });
+    const json: GenererPdfRequest = req.body;
+    const pdf = await brevmalToPdf(json);
+
+    res.header('Content-Type', 'application/pdf');
+    res.setHeader('Content-Type', 'application/pdf');
+    res.send(Buffer.from(pdf));
   } catch (err) {
-    console.log('wtf');
     next(err);
   }
 });
