@@ -32,6 +32,9 @@ spec:
     inbound:
       rules:
         - application: brev
+        - application: azure-token-generator
+          namespace: nais
+          cluster: dev-gcp
     outbound:
       external:
         - host: api.sanity.io
@@ -39,6 +42,8 @@ spec:
         - host: apicdn.sanity.io
         - host: 948n95rd.apicdn.sanity.io
         - host: cdn.sanity.io
+      rules:
+        - application: saksbehandling-pdfgen
 
   observability:
     autoInstrumentation:
@@ -56,5 +61,7 @@ spec:
       value: 948n95rd
     - name: SANITY_PERSPECTIVE
       value: drafts
+    - name: PDF_GEN_URL
+      value: http://saksbehandling-pdfgen
   envFrom:
     - secret: sanity-api-read-token
