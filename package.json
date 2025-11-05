@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "NODE_ENV=production node dist/index.cjs",
-    "dev": "NODE_ENV=development node dist/index.cjs",
+    "dev": "nodemon -e ts,tsx --exec \"yarn build && NODE_ENV=development node dist/index.cjs\"",
     "build": "esbuild src/index.ts --bundle --outfile=dist/index.cjs --platform=node",
     "prepare": "husky",
     "test": "vitest --run",
@@ -37,6 +37,7 @@
     "globals": "^16.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
+    "nodemon": "^3.1.10",
     "openapi-typescript": "^7.4.3",
     "prettier": "^3.4.1",
     "ts-node": "^10.9.2",
