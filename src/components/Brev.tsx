@@ -35,15 +35,17 @@ export const Brev = ({ mottaker, saksnummer, brevmal, brevdata, dato, signaturer
             <h1>{overskrift}</h1>
           </div>
           <div className="container">
-            {brevmal.delmaler.map((delmalRef) => (
-              <>
-                <h2>{delmalRef.delmal.overskrift}</h2>
-                <PortableText
-                  value={delmalRef.delmal.teksteditor}
-                  components={brevmalPortableTextReactComponents(brevdata)}
-                />
-              </>
-            ))}
+            {brevmal.delmaler
+              .filter((delmalRef) => brevdata.delmaler.find((valgtDelmal) => valgtDelmal.id === delmalRef.delmal._id))
+              .map((delmalRef) => (
+                <>
+                  <h2>{delmalRef.delmal.overskrift}</h2>
+                  <PortableText
+                    value={delmalRef.delmal.teksteditor}
+                    components={brevmalPortableTextReactComponents(brevdata)}
+                  />
+                </>
+              ))}
           </div>
           <Signatur signaturer={signaturer} />
         </main>

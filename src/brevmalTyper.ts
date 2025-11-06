@@ -77,6 +77,8 @@ export type EditorTypes =
   | FritekstType;
 
 export interface DelmalType extends SanityAttributes {
+  _id: string;
+  _type: 'delmal';
   internTittel: string; // TODO deprecated skal bort
   beskrivelse: string;
   overskrift?: string | null;
