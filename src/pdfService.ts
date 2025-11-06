@@ -6,8 +6,7 @@ const pdfgenUrl = assertValue(process.env.PDF_GEN_URL, 'Missing environment vari
 
 export async function brevmalToPdf(request: GenererPdfRequest) {
   const html = genererHtml(request);
-
-  const pdf = await fetch(pdfgenUrl, {
+  const pdf = await fetch(pdfgenUrl + '/api/v1/genpdf/html/aap-saksbehandling-pdfgen', {
     method: 'POST',
     headers: {
       'Content-Type': 'text/html',
