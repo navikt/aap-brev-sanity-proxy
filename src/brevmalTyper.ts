@@ -29,8 +29,13 @@ export interface TekstType extends SanityAttributes {
 export interface BetingetTekstType extends TypedObject {
   _key: string;
   _type: 'betingetTekstRef';
-  kategorier: string | null;
   tekst: TekstType;
+}
+
+export interface PeriodetekstType extends TypedObject {
+  _key: string;
+  _type: 'periodetekstRef';
+  periodetekst: TekstType;
 }
 
 export interface KategorisertTekstRef extends TypedObject {

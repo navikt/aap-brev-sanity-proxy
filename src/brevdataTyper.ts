@@ -18,4 +18,11 @@ export interface BrevdataType {
   betingetTekst: {
     id: string;
   }[];
+  periodetekster: {
+    id: string;
+    faktagrunnlag: {
+      tekniskNavn: string;
+      verdi: string;
+    }[];
+  }[];
 }

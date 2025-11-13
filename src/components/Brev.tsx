@@ -4,7 +4,14 @@ import { style } from './style';
 import { Mottaker as MottakerModell, Signatur as SignaturModell } from '../pdfModell';
 import { Header } from './Header';
 import { Signatur } from './Signatur';
-import { BetingetTekstType, BrevmalType, FritekstType, PortableTextFaktagrunnlag, ValgRef } from '../brevmalTyper';
+import {
+  BetingetTekstType,
+  BrevmalType,
+  FritekstType,
+  PeriodetekstType,
+  PortableTextFaktagrunnlag,
+  ValgRef,
+} from '../brevmalTyper';
 import { BrevdataType } from '../brevdataTyper';
 
 interface Props {
@@ -59,20 +66,20 @@ const brevmalPortableTextReactComponents = (
   brevdata: BrevdataType
 ): Partial<PortableTextReactComponents> => ({
   types: {
-    faktagrunnlag: FaktagrunnlagComponent(brevdata),
+    faktagrunnlag: FaktagrunnlagComponent(brevdata.faktagrunnlag),
     valgRef: ValgComponent(brevdata),
     fritekst: FritekstComponent(delmalId, brevdata),
     betingetTekstRef: BetingetTekstComponent(brevdata),
+    periodetekstRef: PeriodetekstComponent(brevdata),
   },
 });
 
-const FaktagrunnlagComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<PortableTextFaktagrunnlag> = (
-  brevdata
-) => {
+const FaktagrunnlagComponent: (
+  faktagrunnlag: { tekniskNavn: string; verdi: string }[]
+) => PortableTextTypeComponent<PortableTextFaktagrunnlag> = (faktagrunnlag) => {
   return (props) => {
     const verdi =
-      brevdata.faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ??
-      `<${props.value.visningsnavn}>`;
+      faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ?? `<${props.value.visningsnavn}>`;
 
     return <span>{verdi}</span>;
   };
@@ -87,7 +94,7 @@ const ValgComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<ValgR
         return (
           <PortableText
             value={alternativ.tekst.teksteditor}
-            components={{ types: { faktagrunnlag: FaktagrunnlagComponent(brevdata) } }}
+            components={{ types: { faktagrunnlag: FaktagrunnlagComponent(brevdata.faktagrunnlag) } }}
           />
         );
       case 'fritekst': {
@@ -126,10 +133,29 @@ const BetingetTekstComponent: (brevdata: BrevdataType) => PortableTextTypeCompon
       return (
         <PortableText
           value={props.value.tekst.teksteditor}
-          components={{ types: { faktagrunnlag: FaktagrunnlagComponent(brevdata) } }}
+          components={{ types: { faktagrunnlag: FaktagrunnlagComponent(brevdata.faktagrunnlag) } }}
         />
       );
     }
+    return null;
+  };
+};
+
+const PeriodetekstComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<PeriodetekstType> = (brevdata) => {
+  return (props) => {
+    const periodetekster = brevdata.periodetekster.filter(
+      (periodetekst) => periodetekst.id === props.value.periodetekst._id
+    );
+
+    if (periodetekster.length) {
+      return periodetekster.map((periodetekst) => (
+        <PortableText
+          value={props.value.periodetekst.teksteditor}
+          components={{ types: { faktagrunnlag: FaktagrunnlagComponent(periodetekst.faktagrunnlag) } }}
+        />
+      ));
+    }
+
     return null;
   };
 };
