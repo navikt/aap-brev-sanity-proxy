@@ -91,7 +91,7 @@ const ValgComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<ValgR
           />
         );
       case 'fritekst': {
-        const fritekst = brevdata.fritekst.find(
+        const fritekst = brevdata.fritekster.find(
           (fritekst) => fritekst.parentId === props.value.valg._id && alternativ._key === fritekst.key
         )?.fritekst;
         if (fritekst) {
@@ -110,7 +110,7 @@ const FritekstComponent: (delmalId: string, brevdata: BrevdataType) => PortableT
   brevdata
 ) => {
   return (props) => {
-    const fritekst = brevdata.fritekst.find(
+    const fritekst = brevdata.fritekster.find(
       (fritekst) => fritekst.parentId === delmalId && fritekst.key === props.value._key
     )?.fritekst;
     if (fritekst) {

@@ -10,7 +10,7 @@ export interface BrevdataType {
     id: string;
     key: string;
   }[];
-  fritekst: {
+  fritekster: {
     parentId: string;
     key: string;
     fritekst: string;
