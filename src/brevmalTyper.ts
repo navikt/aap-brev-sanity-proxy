@@ -1,26 +1,8 @@
 import { PortableTextBlock } from '@portabletext/react';
 import { TypedObject } from '@portabletext/types';
 
-interface SanitySystemType {
-  base: {
-    id: string;
-    rev: string;
-  };
-}
-
-interface SanityAttributes {
-  _createdAt: string;
+export interface TekstType extends TypedObject {
   _id: string;
-  _originalId: string;
-  _rev: string;
-  _system?: SanitySystemType;
-  _type: Innholdstype;
-  _updatedAt: string;
-}
-
-type Innholdstype = 'mal' | 'delmal' | 'valg' | 'tekst';
-
-export interface TekstType extends SanityAttributes {
   _type: 'tekst';
   beskrivelse: string;
   teksteditor: PortableTextBlock[];
@@ -50,10 +32,10 @@ export interface FritekstType extends TypedObject {
   _type: 'fritekst';
 }
 
-export interface ValgType extends SanityAttributes {
+export interface ValgType extends TypedObject {
+  _id: string;
   _type: 'valg';
   alternativer: (KategorisertTekstRef | FritekstType)[];
-  beskrivelse: string;
 }
 
 export interface ValgRef extends TypedObject {
@@ -71,13 +53,10 @@ export interface PortableTextFaktagrunnlag extends TypedObject {
 
 export type EditorTypes = BetingetTekstType | PortableTextBlock | ValgRef | FritekstType;
 
-export interface DelmalType extends SanityAttributes {
+export interface DelmalType extends TypedObject {
   _id: string;
   _type: 'delmal';
-  internTittel: string; // TODO deprecated skal bort
-  beskrivelse: string;
   overskrift?: string | null;
-  paragraf?: string; // TODO skal bort
   teksteditor: EditorTypes[];
 }
 
@@ -85,14 +64,9 @@ export interface DelmalReferanse extends TypedObject {
   _key: string;
   _type: 'delmalRef';
   delmal: DelmalType;
-  obligatorisk: boolean;
 }
 
-export interface BrevmalType extends SanityAttributes {
-  beskrivelse: string;
+export interface BrevmalType extends TypedObject {
   overskrift: string;
-  internTittel: string; // TODO Deprecated
-  journalposttittel: string | null; // TODO må settes?
-  kanSendesAutomatisk: boolean | null; // TODO default false?
   delmaler: DelmalReferanse[];
 }
