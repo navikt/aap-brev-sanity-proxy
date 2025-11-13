@@ -4,7 +4,7 @@ import { style } from './style';
 import { Mottaker as MottakerModell, Signatur as SignaturModell } from '../pdfModell';
 import { Header } from './Header';
 import { Signatur } from './Signatur';
-import { BrevmalType, FritekstType, PortableTextFaktagrunnlag, ValgRef } from '../brevmalTyper';
+import { BetingetTekstType, BrevmalType, FritekstType, PortableTextFaktagrunnlag, ValgRef } from '../brevmalTyper';
 import { BrevdataType } from '../brevdataTyper';
 
 interface Props {
@@ -62,6 +62,7 @@ const brevmalPortableTextReactComponents = (
     faktagrunnlag: FaktagrunnlagComponent(brevdata),
     valgRef: ValgComponent(brevdata),
     fritekst: FritekstComponent(delmalId, brevdata),
+    betingetTekstRef: BetingetTekstComponent(brevdata),
   },
 });
 
@@ -83,7 +84,12 @@ const ValgComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<ValgR
     const alternativ = props.value.valg.alternativer.find((alternativ) => alternativ._key === valgData?.key);
     switch (alternativ?._type) {
       case 'kategorisertTekstRef':
-        return <PortableText value={alternativ.tekst.teksteditor} />;
+        return (
+          <PortableText
+            value={alternativ.tekst.teksteditor}
+            components={{ types: { faktagrunnlag: FaktagrunnlagComponent(brevdata) } }}
+          />
+        );
       case 'fritekst': {
         const fritekst = brevdata.fritekst.find(
           (fritekst) => fritekst.parentId === props.value.valg._id && alternativ._key === fritekst.key
@@ -109,6 +115,20 @@ const FritekstComponent: (delmalId: string, brevdata: BrevdataType) => PortableT
     )?.fritekst;
     if (fritekst) {
       return <span>{fritekst}</span>; // TODO fritekst er lagt opp til å være JSON, visning må endres når vi vet struktur
+    }
+    return null;
+  };
+};
+
+const BetingetTekstComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<BetingetTekstType> = (brevdata) => {
+  return (props) => {
+    if (brevdata.betingetTekst.find((betingetTekst) => betingetTekst.id === props.value.tekst._id)) {
+      return (
+        <PortableText
+          value={props.value.tekst.teksteditor}
+          components={{ types: { faktagrunnlag: FaktagrunnlagComponent(brevdata) } }}
+        />
+      );
     }
     return null;
   };

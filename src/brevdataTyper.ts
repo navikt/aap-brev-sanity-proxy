@@ -15,4 +15,7 @@ export interface BrevdataType {
     key: string;
     fritekst: string;
   }[];
+  betingetTekst: {
+    id: string;
+  }[];
 }
