@@ -21,6 +21,7 @@ interface SanityAttributes {
 type Innholdstype = 'mal' | 'delmal' | 'valg' | 'tekst';
 
 export interface TekstType extends SanityAttributes {
+  _type: 'tekst';
   beskrivelse: string;
   teksteditor: PortableTextBlock[];
 }
@@ -29,13 +30,6 @@ export interface BetingetTekstType extends TypedObject {
   _key: string;
   _type: 'betingetTekstRef';
   kategorier: string | null;
-  tekst: TekstType;
-}
-
-export interface AlternativType extends TypedObject {
-  _key: string;
-  _type: 'valgRef';
-  kategori: string | null;
   tekst: TekstType;
 }
 
@@ -52,7 +46,8 @@ export interface FritekstType extends TypedObject {
 }
 
 export interface ValgType extends SanityAttributes {
-  alternativer: (AlternativType | FritekstType | KategorisertTekstRef)[];
+  _type: 'valg';
+  alternativer: (KategorisertTekstRef | FritekstType)[];
   beskrivelse: string;
 }
 

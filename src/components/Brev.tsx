@@ -4,7 +4,7 @@ import { style } from './style';
 import { Mottaker as MottakerModell, Signatur as SignaturModell } from '../pdfModell';
 import { Header } from './Header';
 import { Signatur } from './Signatur';
-import { BrevmalType, FritekstType, PortableTextFaktagrunnlag } from '../brevmalTyper';
+import { BrevmalType, FritekstType, PortableTextFaktagrunnlag, ValgRef } from '../brevmalTyper';
 import { BrevdataType } from '../brevdataTyper';
 
 interface Props {
@@ -60,6 +60,7 @@ const brevmalPortableTextReactComponents = (
 ): Partial<PortableTextReactComponents> => ({
   types: {
     faktagrunnlag: FaktagrunnlagComponent(brevdata),
+    valgRef: ValgComponent(brevdata),
     fritekst: FritekstComponent(delmalId, brevdata),
   },
 });
@@ -76,16 +77,38 @@ const FaktagrunnlagComponent: (brevdata: BrevdataType) => PortableTextTypeCompon
   };
 };
 
+const ValgComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<ValgRef> = (brevdata) => {
+  return (props) => {
+    const valgData = brevdata.valg.find((valg) => valg.id === props.value.valg._id);
+    const alternativ = props.value.valg.alternativer.find((alternativ) => alternativ._key === valgData?.key);
+    switch (alternativ?._type) {
+      case 'kategorisertTekstRef':
+        return <PortableText value={alternativ.tekst.teksteditor} />;
+      case 'fritekst': {
+        const fritekst = brevdata.fritekst.find(
+          (fritekst) => fritekst.parentId === props.value.valg._id && alternativ._key === fritekst.key
+        )?.fritekst;
+        if (fritekst) {
+          return <span>{fritekst}</span>; // TODO fritekst er lagt opp til å være JSON, visning må endres når vi vet struktur
+        }
+        return null;
+      }
+      default:
+        return null;
+    }
+  };
+};
+
 const FritekstComponent: (delmalId: string, brevdata: BrevdataType) => PortableTextTypeComponent<FritekstType> = (
   delmalId,
   brevdata
 ) => {
   return (props) => {
-    const tekst = brevdata.fritekst.find(
+    const fritekst = brevdata.fritekst.find(
       (fritekst) => fritekst.parentId === delmalId && fritekst.key === props.value._key
-    );
-    if (tekst) {
-      return <span>{tekst.fritekst}</span>;
+    )?.fritekst;
+    if (fritekst) {
+      return <span>{fritekst}</span>; // TODO fritekst er lagt opp til å være JSON, visning må endres når vi vet struktur
     }
     return null;
   };

@@ -6,6 +6,10 @@ export interface BrevdataType {
     tekniskNavn: string;
     verdi: string;
   }[];
+  valg: {
+    id: string;
+    key: string;
+  }[];
   fritekst: {
     parentId: string;
     key: string;
