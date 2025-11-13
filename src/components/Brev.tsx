@@ -4,7 +4,7 @@ import { style } from './style';
 import { Mottaker as MottakerModell, Signatur as SignaturModell } from '../pdfModell';
 import { Header } from './Header';
 import { Signatur } from './Signatur';
-import { BrevmalType, PortableTextFaktagrunnlag } from '../brevmalTyper';
+import { BrevmalType, FritekstType, PortableTextFaktagrunnlag } from '../brevmalTyper';
 import { BrevdataType, FaktagrunnlagMedVerdiType } from '../brevdataTyper';
 
 interface Props {
@@ -57,6 +57,7 @@ export const Brev = ({ mottaker, saksnummer, brevmal, brevdata, dato, signaturer
 const brevmalPortableTextReactComponents = (brevdata: BrevdataType): Partial<PortableTextReactComponents> => ({
   types: {
     faktagrunnlag: FaktagrunnlagComponent(brevdata.faktagrunnlag),
+    fritekst: FritekstComponent(),
   },
 });
 
@@ -68,5 +69,11 @@ const FaktagrunnlagComponent: (
       faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ?? `<${props.value.visningsnavn}>`;
 
     return <span>{verdi}</span>;
+  };
+};
+
+const FritekstComponent = (): PortableTextTypeComponent<FritekstType> => {
+  return (props) => {
+    return <span>{props.value.fritekst}</span>;
   };
 };

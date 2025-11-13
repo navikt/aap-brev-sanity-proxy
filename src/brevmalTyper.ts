@@ -1,5 +1,5 @@
 import { PortableTextBlock } from '@portabletext/react';
-import { PortableTextMarkDefinition, PortableTextSpan } from '@portabletext/types';
+import { TypedObject } from '@portabletext/types';
 
 interface SanitySystemType {
   base: {
@@ -25,28 +25,28 @@ export interface TekstType extends SanityAttributes {
   teksteditor: PortableTextBlock[];
 }
 
-export interface BetingetTekstType {
+export interface BetingetTekstType extends TypedObject {
   _key: string;
   _type: 'betingetTekstRef';
   kategorier: string | null;
   tekst: TekstType;
 }
 
-export interface AlternativType {
+export interface AlternativType extends TypedObject {
   _key: string;
   _type: 'valgRef';
   kategori: string | null;
   tekst: TekstType;
 }
 
-export interface KategorisertTekstRef {
+export interface KategorisertTekstRef extends TypedObject {
   _key: string;
   _type: 'kategorisertTekstRef';
   kategori: string | null;
   tekst: TekstType;
 }
 
-export interface FritekstType {
+export interface FritekstType extends TypedObject {
   _key: string;
   _type: 'fritekst';
   fritekst: string;
@@ -57,24 +57,20 @@ export interface ValgType extends SanityAttributes {
   beskrivelse: string;
 }
 
-export interface ValgRef {
+export interface ValgRef extends TypedObject {
   _key: string;
   _type: 'valgRef';
   obligatorisk: boolean;
   valg: ValgType;
 }
 
-export interface PortableTextFaktagrunnlag {
+export interface PortableTextFaktagrunnlag extends TypedObject {
   _type: 'faktagrunnlag';
   visningsnavn: string;
   tekniskNavn: string;
 }
 
-export type EditorTypes =
-  | BetingetTekstType
-  | PortableTextBlock<PortableTextMarkDefinition, PortableTextSpan | PortableTextFaktagrunnlag>
-  | ValgRef
-  | FritekstType;
+export type EditorTypes = BetingetTekstType | PortableTextBlock | ValgRef | FritekstType;
 
 export interface DelmalType extends SanityAttributes {
   _id: string;
@@ -86,7 +82,7 @@ export interface DelmalType extends SanityAttributes {
   teksteditor: EditorTypes[];
 }
 
-export interface DelmalReferanse {
+export interface DelmalReferanse extends TypedObject {
   _key: string;
   _type: 'delmalRef';
   delmal: DelmalType;
