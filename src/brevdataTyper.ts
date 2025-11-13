@@ -1,12 +1,14 @@
 export interface BrevdataType {
-  delmaler: ValgtDelmalType[];
-  faktagrunnlag: FaktagrunnlagMedVerdiType[];
-}
-
-export interface ValgtDelmalType {
-  id: string;
-}
-export interface FaktagrunnlagMedVerdiType {
-  tekniskNavn: string;
-  verdi: string;
+  delmaler: {
+    id: string;
+  }[];
+  faktagrunnlag: {
+    tekniskNavn: string;
+    verdi: string;
+  }[];
+  fritekst: {
+    parentId: string;
+    key: string;
+    fritekst: string;
+  }[];
 }

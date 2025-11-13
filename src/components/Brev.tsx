@@ -5,7 +5,7 @@ import { Mottaker as MottakerModell, Signatur as SignaturModell } from '../pdfMo
 import { Header } from './Header';
 import { Signatur } from './Signatur';
 import { BrevmalType, FritekstType, PortableTextFaktagrunnlag } from '../brevmalTyper';
-import { BrevdataType, FaktagrunnlagMedVerdiType } from '../brevdataTyper';
+import { BrevdataType } from '../brevdataTyper';
 
 interface Props {
   mottaker: MottakerModell;
@@ -42,7 +42,7 @@ export const Brev = ({ mottaker, saksnummer, brevmal, brevdata, dato, signaturer
                   <h2>{delmalRef.delmal.overskrift}</h2>
                   <PortableText
                     value={delmalRef.delmal.teksteditor}
-                    components={brevmalPortableTextReactComponents(brevdata)}
+                    components={brevmalPortableTextReactComponents(delmalRef.delmal._id, brevdata)}
                   />
                 </>
               ))}
@@ -54,26 +54,39 @@ export const Brev = ({ mottaker, saksnummer, brevmal, brevdata, dato, signaturer
   );
 };
 
-const brevmalPortableTextReactComponents = (brevdata: BrevdataType): Partial<PortableTextReactComponents> => ({
+const brevmalPortableTextReactComponents = (
+  delmalId: string,
+  brevdata: BrevdataType
+): Partial<PortableTextReactComponents> => ({
   types: {
-    faktagrunnlag: FaktagrunnlagComponent(brevdata.faktagrunnlag),
-    fritekst: FritekstComponent(),
+    faktagrunnlag: FaktagrunnlagComponent(brevdata),
+    fritekst: FritekstComponent(delmalId, brevdata),
   },
 });
 
-const FaktagrunnlagComponent: (
-  faktagrunnlag: FaktagrunnlagMedVerdiType[]
-) => PortableTextTypeComponent<PortableTextFaktagrunnlag> = (faktagrunnlag) => {
+const FaktagrunnlagComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<PortableTextFaktagrunnlag> = (
+  brevdata
+) => {
   return (props) => {
     const verdi =
-      faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ?? `<${props.value.visningsnavn}>`;
+      brevdata.faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ??
+      `<${props.value.visningsnavn}>`;
 
     return <span>{verdi}</span>;
   };
 };
 
-const FritekstComponent = (): PortableTextTypeComponent<FritekstType> => {
+const FritekstComponent: (delmalId: string, brevdata: BrevdataType) => PortableTextTypeComponent<FritekstType> = (
+  delmalId,
+  brevdata
+) => {
   return (props) => {
-    return <span>{props.value.fritekst}</span>;
+    const tekst = brevdata.fritekst.find(
+      (fritekst) => fritekst.parentId === delmalId && fritekst.key === props.value._key
+    );
+    if (tekst) {
+      return <span>{tekst.fritekst}</span>;
+    }
+    return null;
   };
 };

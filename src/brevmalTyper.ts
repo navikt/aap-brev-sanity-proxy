@@ -49,7 +49,6 @@ export interface KategorisertTekstRef extends TypedObject {
 export interface FritekstType extends TypedObject {
   _key: string;
   _type: 'fritekst';
-  fritekst: string;
 }
 
 export interface ValgType extends SanityAttributes {
