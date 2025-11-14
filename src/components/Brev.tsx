@@ -101,18 +101,18 @@ const brevmalPortableTextReactComponents = (
   },
 });
 
-const FaktagrunnlagComponent: (
+function FaktagrunnlagComponent(
   faktagrunnlag: { tekniskNavn: string; verdi: string }[]
-) => PortableTextTypeComponent<PortableTextFaktagrunnlag> = (faktagrunnlag) => {
+): PortableTextTypeComponent<PortableTextFaktagrunnlag> {
   return (props) => {
     const verdi =
       faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ?? `<${props.value.visningsnavn}>`;
 
     return <span>{verdi}</span>;
   };
-};
+}
 
-const ValgComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<ValgRef> = (brevdata) => {
+function ValgComponent(brevdata: BrevdataType): PortableTextTypeComponent<ValgRef> {
   return (props) => {
     const valgData = brevdata.valg.find((valg) => valg.id === props.value.valg._id);
     const alternativ = props.value.valg.alternativer.find((alternativ) => alternativ._key === valgData?.key);
@@ -132,12 +132,9 @@ const ValgComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<ValgR
         return null;
     }
   };
-};
+}
 
-const FritekstComponent: (delmalId: string, brevdata: BrevdataType) => PortableTextTypeComponent<FritekstType> = (
-  delmalId,
-  brevdata
-) => {
+function FritekstComponent(delmalId: string, brevdata: BrevdataType): PortableTextTypeComponent<FritekstType> {
   return (props) => {
     const fritekst = brevdata.fritekster.find(
       (fritekst) => fritekst.parentId === delmalId && fritekst.key === props.value._key
@@ -147,18 +144,18 @@ const FritekstComponent: (delmalId: string, brevdata: BrevdataType) => PortableT
     }
     return null;
   };
-};
+}
 
-const BetingetTekstComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<BetingetTekstType> = (brevdata) => {
+function BetingetTekstComponent(brevdata: BrevdataType): PortableTextTypeComponent<BetingetTekstType> {
   return (props) => {
     if (brevdata.betingetTekst.find((betingetTekst) => betingetTekst.id === props.value.tekst._id)) {
       return <Teksteditor tekst={props.value.tekst} faktagrunnlag={brevdata.faktagrunnlag} />;
     }
     return null;
   };
-};
+}
 
-const PeriodetekstComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<PeriodetekstType> = (brevdata) => {
+function PeriodetekstComponent(brevdata: BrevdataType): PortableTextTypeComponent<PeriodetekstType> {
   return (props) => {
     const periodetekster = brevdata.periodetekster.filter(
       (periodetekst) => periodetekst.id === props.value.periodetekst._id
@@ -172,4 +169,4 @@ const PeriodetekstComponent: (brevdata: BrevdataType) => PortableTextTypeCompone
 
     return null;
   };
-};
+}
