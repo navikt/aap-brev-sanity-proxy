@@ -23,7 +23,6 @@ export interface PeriodetekstType extends TypedObject {
 export interface KategorisertTekstRef extends TypedObject {
   _key: string;
   _type: 'kategorisertTekstRef';
-  kategori: string | null;
   tekst: TekstType;
 }
 
