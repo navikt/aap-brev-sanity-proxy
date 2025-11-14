@@ -7,10 +7,10 @@ import { GenererPdfRequest } from '../pdfModell';
 export const genererHtml = (request: GenererPdfRequest) => {
   return renderToStaticMarkup(
     <Brev
-      overskrift={request.overskrift}
       mottaker={request.mottaker}
       saksnummer={request.saksnummer}
       brevmal={request.brevmal}
+      brevdata={request.brevdata}
       dato={request.dato}
       signaturer={request.signaturer}
     />

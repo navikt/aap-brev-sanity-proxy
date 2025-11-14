@@ -1,4 +1,5 @@
-import { PortableTextBlock } from '@portabletext/react';
+import { BrevmalType } from './brevmalTyper';
+import { BrevdataType } from './brevdataTyper';
 
 export interface Mottaker {
   navn: string;
@@ -12,11 +13,10 @@ export interface Signatur {
 }
 
 export interface GenererPdfRequest {
-  overskrift: string;
   mottaker: Mottaker;
   saksnummer: string;
   dato: string;
   signaturer: Signatur[];
-  brevmal: PortableTextBlock; // TODO lage type for brevmal
-  // brevdata: Brevdata // TODO
+  brevmal: BrevmalType;
+  brevdata: BrevdataType;
 }
