@@ -25,6 +25,8 @@ kopier verdi for `SANITY_API_READ_TOKEN` til clipboard
 docker run -d --rm -p 8087:8087 \
     -e "SANITY_API_READ_TOKEN=`pbpaste`" \
     -e "SANITY_PROJECT_ID=948n95rd" \
+    -e "SANITY_PERSPECTIVE=drafts" \
+    -e "PDF_GEN_URL=http://localhost:8020" \
     -e "SANITY_DATASET=production" \
     -e "NODE_ENV=development" \
     aap-brev-sanity-proxy-local-build:latest
