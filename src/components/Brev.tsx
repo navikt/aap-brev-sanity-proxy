@@ -7,9 +7,11 @@ import { Signatur } from './Signatur';
 import {
   BetingetTekstType,
   BrevmalType,
+  DelmalType,
   FritekstType,
   PeriodetekstType,
   PortableTextFaktagrunnlag,
+  TekstType,
   ValgRef,
 } from '../brevmalTyper';
 import { BrevdataType } from '../brevdataTyper';
@@ -47,10 +49,7 @@ export const Brev = ({ mottaker, saksnummer, brevmal, brevdata, dato, signaturer
               .map((delmalRef) => (
                 <>
                   <h2>{delmalRef.delmal.overskrift}</h2>
-                  <PortableText
-                    value={delmalRef.delmal.teksteditor}
-                    components={brevmalPortableTextReactComponents(delmalRef.delmal._id, brevdata)}
-                  />
+                  <DelmalEditor delmal={delmalRef.delmal} brevdata={brevdata} />
                 </>
               ))}
           </div>
@@ -58,6 +57,34 @@ export const Brev = ({ mottaker, saksnummer, brevmal, brevdata, dato, signaturer
         </main>
       </body>
     </html>
+  );
+};
+
+interface DelmalEditorProps {
+  delmal: DelmalType;
+  brevdata: BrevdataType;
+}
+
+const DelmalEditor = (props: DelmalEditorProps) => {
+  return (
+    <PortableText
+      value={props.delmal.teksteditor}
+      components={brevmalPortableTextReactComponents(props.delmal._id, props.brevdata)}
+    />
+  );
+};
+
+interface TeksteditorProps {
+  tekst: TekstType;
+  faktagrunnlag: { tekniskNavn: string; verdi: string }[];
+}
+
+const Teksteditor = (props: TeksteditorProps) => {
+  return (
+    <PortableText
+      value={props.tekst.teksteditor}
+      components={{ types: { faktagrunnlag: FaktagrunnlagComponent(props.faktagrunnlag) } }}
+    />
   );
 };
 
@@ -91,12 +118,7 @@ const ValgComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<ValgR
     const alternativ = props.value.valg.alternativer.find((alternativ) => alternativ._key === valgData?.key);
     switch (alternativ?._type) {
       case 'kategorisertTekstRef':
-        return (
-          <PortableText
-            value={alternativ.tekst.teksteditor}
-            components={{ types: { faktagrunnlag: FaktagrunnlagComponent(brevdata.faktagrunnlag) } }}
-          />
-        );
+        return <Teksteditor tekst={alternativ.tekst} faktagrunnlag={brevdata.faktagrunnlag} />;
       case 'fritekst': {
         const fritekst = brevdata.fritekster.find(
           (fritekst) => fritekst.parentId === props.value.valg._id && alternativ._key === fritekst.key
@@ -130,12 +152,7 @@ const FritekstComponent: (delmalId: string, brevdata: BrevdataType) => PortableT
 const BetingetTekstComponent: (brevdata: BrevdataType) => PortableTextTypeComponent<BetingetTekstType> = (brevdata) => {
   return (props) => {
     if (brevdata.betingetTekst.find((betingetTekst) => betingetTekst.id === props.value.tekst._id)) {
-      return (
-        <PortableText
-          value={props.value.tekst.teksteditor}
-          components={{ types: { faktagrunnlag: FaktagrunnlagComponent(brevdata.faktagrunnlag) } }}
-        />
-      );
+      return <Teksteditor tekst={props.value.tekst} faktagrunnlag={brevdata.faktagrunnlag} />;
     }
     return null;
   };
@@ -149,10 +166,7 @@ const PeriodetekstComponent: (brevdata: BrevdataType) => PortableTextTypeCompone
 
     if (periodetekster.length) {
       return periodetekster.map((periodetekst) => (
-        <PortableText
-          value={props.value.periodetekst.teksteditor}
-          components={{ types: { faktagrunnlag: FaktagrunnlagComponent(periodetekst.faktagrunnlag) } }}
-        />
+        <Teksteditor tekst={props.value.periodetekst} faktagrunnlag={periodetekst.faktagrunnlag} />
       ));
     }
 
