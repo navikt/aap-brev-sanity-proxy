@@ -67,6 +67,7 @@ export interface DelmalReferanse extends TypedObject {
 }
 
 export interface BrevmalType extends TypedObject {
+  _type: 'mal';
   overskrift: string;
   delmaler: DelmalReferanse[];
 }
