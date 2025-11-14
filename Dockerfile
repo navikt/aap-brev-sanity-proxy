@@ -3,5 +3,6 @@ FROM gcr.io/distroless/nodejs20-debian12@sha256:adce8f03e2b82454f0e36843879529ad
 ENV NODE_ENV production
 
 COPY dist/index.cjs .
+COPY dist/index.cjs.map .
 
-CMD ["index.cjs"]
+CMD ["--enable-source-maps", "index.cjs"]
