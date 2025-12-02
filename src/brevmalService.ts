@@ -6,9 +6,8 @@ import { MalQuery } from './sanity/brevmalQuery';
 // Ny brevmodell
 export async function hentBrevmal(brevtype: Brevtype, språk: Språk) {
   const malId = brevtypeTilSanityId(brevtype);
-  const res = await client.fetch(MalQuery, { id: malId, lang: språk });
-  console.log(`Mal fra Sanity: ${JSON.stringify(res)}`);
-  return res;
+
+  return client.fetch(MalQuery, { id: malId, lang: språk });
 }
 
 const brevtypeTilSanityId = (brevtype: Brevtype) => {
