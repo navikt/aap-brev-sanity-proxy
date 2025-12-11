@@ -124,7 +124,7 @@ function ValgComponent(brevdata: BrevdataType): PortableTextTypeComponent<ValgRe
           (fritekst) => fritekst.parentId === props.value.valg._id && alternativ._key === fritekst.key
         )?.fritekst;
         if (fritekst) {
-          return <span>{fritekst}</span>; // TODO fritekst er lagt opp til å være JSON, visning må endres når vi vet struktur
+          return <span>{fritekst.tekst}</span>;
         }
         return null;
       }
@@ -140,7 +140,7 @@ function FritekstComponent(delmalId: string, brevdata: BrevdataType): PortableTe
       (fritekst) => fritekst.parentId === delmalId && fritekst.key === props.value._key
     )?.fritekst;
     if (fritekst) {
-      return <span>{fritekst}</span>; // TODO fritekst er lagt opp til å være JSON, visning må endres når vi vet struktur
+      return <span>{fritekst.tekst}</span>;
     }
     return null;
   };
