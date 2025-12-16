@@ -23,13 +23,12 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
           _key,
           children[] {
             ...,
-            _type != 'faktagrunnlag' => {
             _key,
+            _type != 'faktagrunnlag' => {
               ...
             },
             _type == 'faktagrunnlag' => @-> {
               ...,
-              _key,
               _id,
               datatype,
               tekniskNavn,
@@ -61,17 +60,16 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
                     _id,
                     children[] {
                       ...,
+                      _key,
                       _type != 'faktagrunnlag' => {
-                         _key,
                         ...
                       },
                       _type == 'faktagrunnlag' => @-> {
-                          ...,
-                          _key,
-                          _id,
-                          datatype,
-                          tekniskNavn,
-                          visningsnavn
+                        ...,
+                        _id,
+                        datatype,
+                        tekniskNavn,
+                        visningsnavn
                       }
                     }
                   }
@@ -94,12 +92,12 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
               ...,
               children[] {
                 ...,
+                _key,
                 _type != 'faktagrunnlag' => {
                   ...
                 },
                 _type == 'faktagrunnlag' => @-> {
                   ...,
-                  _key,
                   _id,
                   datatype,
                   tekniskNavn,
@@ -116,14 +114,13 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
             "teksteditor": (teksteditor[_key == $lang].value)[0][] {
               ...,
               children[] {
+                _key,
                 ...,
                 _type != 'faktagrunnlag' => {
                   ...,
-                  _key,
                 },
                 _type == 'faktagrunnlag' => @-> {
                   ...,
-                  _key,
                   _id,
                   datatype,
                   tekniskNavn,
