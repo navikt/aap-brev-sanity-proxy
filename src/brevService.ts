@@ -33,6 +33,7 @@ const brevtypeTilSanityId = {
   [Brevtype.KLAGE_AVVIST]: '299aea66-6d90-4b81-b217-cca24fab359a',
   [Brevtype.KLAGE_OPPRETTHOLDELSE]: 'c312cb2e-46f6-4296-97a9-c05b2309fcb5',
   [Brevtype.KLAGE_TRUKKET]: 'dc797205-0fd9-4c3b-87f1-03f3ad345fab',
+  [Brevtype.KLAGE_MOTTATT]: 'f8ae492b-525d-48e7-b784-d85ef3c687c2',
   [Brevtype.FORHÅNDSVARSEL_KLAGE_FORMKRAV]: '8f5bb5df-ea9b-4efb-a571-bb551984347c',
   [Brevtype.OMGJØRING_VEDTAK_11_9]: 'ee6ae0d1-d3d3-419c-9ecc-145b38814cf6',
   [Brevtype.BARNETILLEGG_SATS_REGULERING]: '53a34486-3679-4b2f-9e3d-be3c76c16905',
