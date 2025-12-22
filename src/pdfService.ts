@@ -13,9 +13,6 @@ export async function brevmalToPdf(request: GenererPdfRequest) {
       Accept: 'application/pdf',
     },
     body: html,
-  }).catch((error) => {
-    console.error(error);
-    throw error;
   });
 
   return pdf.arrayBuffer();
