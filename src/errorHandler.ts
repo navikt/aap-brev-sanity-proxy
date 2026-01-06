@@ -6,10 +6,18 @@ export const errorHandler: ErrorRequestHandler = (err, _, res, next) => {
     return next(err);
   }
   if (process.env.NODE_ENV === 'development') {
-    console.error('Unhåndtert feil', err);
+    console.error(err);
   } else {
-    logger.error(err, 'Unhåndtert feil');
+    const message = getErrorMessage(err);
+    logger.error(err, message);
   }
 
   res.status(500).end();
 };
+
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+  return String(error);
+}
