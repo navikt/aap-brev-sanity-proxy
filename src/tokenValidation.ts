@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express-serve-static-core';
 import { getToken, validateAzureToken } from '@navikt/oasis';
+import { logger } from '@navikt/pino-logger';
 
 export const validateToken = async (req: Request, res: Response, next: NextFunction) => {
   if (process.env.NODE_ENV === 'development') {
-    console.log('Skip validation for development!');
+    logger.info('Skip validation for development!');
     return next();
   }
 
