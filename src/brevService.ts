@@ -37,4 +37,5 @@ const brevtypeTilSanityId = {
   [Brevtype.FORHÅNDSVARSEL_KLAGE_FORMKRAV]: '8f5bb5df-ea9b-4efb-a571-bb551984347c',
   [Brevtype.OMGJØRING_VEDTAK_11_9]: 'ee6ae0d1-d3d3-419c-9ecc-145b38814cf6',
   [Brevtype.BARNETILLEGG_SATS_REGULERING]: '53a34486-3679-4b2f-9e3d-be3c76c16905',
+  [Brevtype.VEDTAK_UTVID_VEDTAKSLENGDE]: '4583f064-1dcc-4b52-a7f7-16636451cd34',
 };
