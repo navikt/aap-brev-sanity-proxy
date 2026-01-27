@@ -5,10 +5,13 @@ import { Brevtype } from './brevtype.js';
 
 export async function flettBrev(ønsketBrevtype: Brevtype, ønsketSpråk: Språk) {
   const brevtypeId = brevtypeTilSanityId[ønsketBrevtype];
-  const brevtyper = await getBrevtyper();
-  const tekstbolker = await getTekstbolker();
-  const innhold = await getInnhold();
-  const faktagrunnlag = await getFaktagrunnlag();
+  const [brevtyper, tekstbolker, innhold, faktagrunnlag] = await Promise.all([
+      getBrevtyper(),
+      getTekstbolker(),
+      getInnhold(),
+      getFaktagrunnlag()
+      ]);
+
   const brevtype = brevtyper.find((x) => x._id === brevtypeId);
 
   if (!brevtype) {
