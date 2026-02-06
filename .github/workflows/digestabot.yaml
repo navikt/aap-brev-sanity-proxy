@@ -15,7 +15,7 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v6 # Immutable release
-      - uses: navikt/digestabot@v1.0 # Immutable release
+      - uses: navikt/digestabot@v1.1 # Immutable release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           team: aap
