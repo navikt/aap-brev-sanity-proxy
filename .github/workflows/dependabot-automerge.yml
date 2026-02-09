@@ -9,6 +9,7 @@ jobs:
     uses: navikt/aap-workflows/.github/workflows/merge-dependabot-pr.yml@main
     with:
       disable-dependabot-merge: true
+      workflow-id: "build-and-deploy.yaml"
     permissions:
       actions: write
       checks: read
