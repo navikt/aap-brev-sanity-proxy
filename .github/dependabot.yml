@@ -11,16 +11,17 @@ updates:
       directory: /
       schedule:
           interval: daily
-      open-pull-requests-limit: 1
+      open-pull-requests-limit: 5
     - package-ecosystem: npm
       directory: /
       schedule:
           interval: daily
-      open-pull-requests-limit: 1
+      open-pull-requests-limit: 5
+      registries: '*'
     - package-ecosystem: docker
       directory: /
       schedule:
           interval: daily
-      open-pull-requests-limit: 1
+      open-pull-requests-limit: 5
       ignore:
         - dependency-name: 'cgr-nav/pull-through/nav.no/node'
