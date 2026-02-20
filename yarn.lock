@@ -613,10 +613,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:^9.14.0":
-  version: 9.14.0
-  resolution: "@eslint/js@npm:9.14.0"
-  checksum: 10c0/a423dd435e10aa3b461599aa02f6cbadd4b5128cb122467ee4e2c798e7ca4f9bb1fce4dcea003b29b983090238cf120899c1af657cf86300b399e4f996b83ddc
+"@eslint/js@npm:^10.0.1":
+  version: 10.0.1
+  resolution: "@eslint/js@npm:10.0.1"
+  peerDependencies:
+    eslint: ^10.0.0
+  peerDependenciesMeta:
+    eslint:
+      optional: true
+  checksum: 10c0/9f3fcaf71ba7fdf65d82e8faad6ecfe97e11801cc3c362b306a88ea1ed1344ae0d35330dddb0e8ad18f010f6687a70b75491b9e01c8af57acd7987cee6b3ec6c
   languageName: node
   linkType: hard
 
@@ -1843,7 +1848,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "aap-sanity@workspace:."
   dependencies:
-    "@eslint/js": "npm:^9.14.0"
+    "@eslint/js": "npm:^10.0.1"
     "@navikt/aap-felles-prettier": "npm:^5.6.0"
     "@navikt/aap-felles-utils": "npm:^5.5.1"
     "@navikt/aap-sanity-schema-types": "npm:^0.1.1"
