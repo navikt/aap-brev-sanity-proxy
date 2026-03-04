@@ -18,6 +18,8 @@ const brevtypeTilSanityId = (brevtype: Brevtype) => {
       return '6b229785-4514-4506-8988-8ac81af51503';
     case Brevtype.AVSLAG:
       return '40a9777b-b6fc-43b1-aec9-aa5d3357db7a';
+    case Brevtype.STANS_AV_YTELSE:
+      return '0e92d26d-0864-4241-9254-959559368d89';
     default:
       throw new Error(`Mangler mapping fra brevtype ${brevtype} til id`);
   }
