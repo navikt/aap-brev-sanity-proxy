@@ -22,7 +22,7 @@
   "dependencies": {
     "@navikt/aap-felles-utils": "^5.5.1",
     "@navikt/aap-sanity-schema-types": "^0.1.1",
-    "@navikt/oasis": "^3.8.0",
+    "@navikt/oasis": "^4.1.4",
     "@navikt/pino-logger": "^4.4.4",
     "@portabletext/react": "^4.0.3",
     "@sanity/client": "^6.24.1",
