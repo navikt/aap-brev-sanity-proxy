@@ -6,11 +6,11 @@ import { Brevtype } from './brevtype.js';
 export async function flettBrev(ønsketBrevtype: Brevtype, ønsketSpråk: Språk) {
   const brevtypeId = brevtypeTilSanityId[ønsketBrevtype];
   const [brevtyper, tekstbolker, innhold, faktagrunnlag] = await Promise.all([
-      getBrevtyper(),
-      getTekstbolker(),
-      getInnhold(),
-      getFaktagrunnlag()
-      ]);
+    getBrevtyper(),
+    getTekstbolker(),
+    getInnhold(),
+    getFaktagrunnlag(),
+  ]);
 
   const brevtype = brevtyper.find((x) => x._id === brevtypeId);
 
@@ -41,4 +41,11 @@ const brevtypeTilSanityId = {
   [Brevtype.OMGJØRING_VEDTAK_11_9]: 'ee6ae0d1-d3d3-419c-9ecc-145b38814cf6',
   [Brevtype.BARNETILLEGG_SATS_REGULERING]: '53a34486-3679-4b2f-9e3d-be3c76c16905',
   [Brevtype.VEDTAK_UTVID_VEDTAKSLENGDE]: '4583f064-1dcc-4b52-a7f7-16636451cd34',
+  [Brevtype.STANS_AV_YTELSE]: undefined,
+  [Brevtype.VEDTAK_FORLENGELSE_UNDER_ETT_ÅR_MEDLEMSKAP]: 'ad4f5ba1-3b39-4526-9871-fdb1ebac0089',
+  [Brevtype.VEDTAK_FORLENGELSE_UNDER_ETT_ÅR_11_3]: 'f0405c23-b6c8-4642-8670-3996dcc91934',
+  [Brevtype.VEDTAK_FORLENGELSE_UNDER_ETT_ÅR_11_4]: 'b98d38d3-eb16-4cf5-a061-26200af7280c',
+  [Brevtype.VEDTAK_FORLENGELSE_UNDER_ETT_ÅR_11_12]: '1628e7a2-ade0-4e25-a5f9-07bc68b1ff70',
+  [Brevtype.VEDTAK_FORLENGELSE_UNDER_ETT_ÅR_11_26]: '6b281ec4-8ba6-40d7-955c-2a43e1fdec42',
+  [Brevtype.VEDTAK_FORLENGELSE_UNDER_ETT_ÅR_11_27]: 'd6ae1810-242d-47c7-a79d-899ad1914823',
 };
