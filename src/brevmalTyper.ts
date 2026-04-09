@@ -14,12 +14,6 @@ export interface BetingetTekstType extends TypedObject {
   tekst: TekstType;
 }
 
-export interface PeriodetekstType extends TypedObject {
-  _key: string;
-  _type: 'periodetekstRef';
-  periodetekst: TekstType;
-}
-
 export interface KategorisertTekstRef extends TypedObject {
   _key: string;
   _type: 'kategorisertTekstRef';
