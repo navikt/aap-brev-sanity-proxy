@@ -84,29 +84,6 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
               }
           }
         },
-        _type == 'periodetekstRef' => {
-          periodetekst -> {
-            ...,
-            _key,
-            "teksteditor": (teksteditor[_key == $lang].value)[0][] {
-              ...,
-              children[] {
-                ...,
-                _key,
-                _type != 'faktagrunnlag' => {
-                  ...
-                },
-                _type == 'faktagrunnlag' => @-> {
-                  ...,
-                  _id,
-                  datatype,
-                  tekniskNavn,
-                  visningsnavn
-                }
-              }
-            }
-          }
-        },
         _type == 'betingetTekstRef' => {
           ...,
           tekst -> {

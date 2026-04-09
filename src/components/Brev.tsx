@@ -9,7 +9,6 @@ import {
   BrevmalType,
   DelmalType,
   FritekstType,
-  PeriodetekstType,
   PortableTextFaktagrunnlag,
   TekstType,
   ValgRef,
@@ -97,7 +96,6 @@ const brevmalPortableTextReactComponents = (
     valgRef: ValgComponent(brevdata),
     fritekst: FritekstComponent(delmalId, brevdata),
     betingetTekstRef: BetingetTekstComponent(brevdata),
-    periodetekstRef: PeriodetekstComponent(brevdata),
   },
 });
 
@@ -151,22 +149,6 @@ function BetingetTekstComponent(brevdata: BrevdataType): PortableTextTypeCompone
     if (brevdata.betingetTekst.find((betingetTekst) => betingetTekst.id === props.value.tekst._id)) {
       return <Teksteditor tekst={props.value.tekst} faktagrunnlag={brevdata.faktagrunnlag} />;
     }
-    return null;
-  };
-}
-
-function PeriodetekstComponent(brevdata: BrevdataType): PortableTextTypeComponent<PeriodetekstType> {
-  return (props) => {
-    const periodetekster = brevdata.periodetekster.filter(
-      (periodetekst) => periodetekst.id === props.value.periodetekst._id
-    );
-
-    if (periodetekster.length) {
-      return periodetekster.map((periodetekst) => (
-        <Teksteditor tekst={props.value.periodetekst} faktagrunnlag={periodetekst.faktagrunnlag} />
-      ));
-    }
-
     return null;
   };
 }
