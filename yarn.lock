@@ -1194,15 +1194,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/client@npm:^7.20.0":
-  version: 7.20.0
-  resolution: "@sanity/client@npm:7.20.0"
+"@sanity/client@npm:^7.22.0":
+  version: 7.22.0
+  resolution: "@sanity/client@npm:7.22.0"
   dependencies:
     "@sanity/eventsource": "npm:^5.0.2"
-    get-it: "npm:^8.7.0"
+    get-it: "npm:^8.7.2"
     nanoid: "npm:^3.3.11"
     rxjs: "npm:^7.0.0"
-  checksum: 10c0/b70eff5169ad8f9ccb3baa163f79698a5551b275b97e0b3c7a05ed1ca5f6c3b7b1c317e38e25a0a235f6f547f95b988058081af41b2d11cb128671a4727780b6
+  checksum: 10c0/5205da937be67fb4baac57061ac985d0010712bcc549e8188293e87d84fb829a88f81a76ddb7cc0ab66abf584c41a6b7dc33dc1222c84bf5adcb95b9f2f3aaee
   languageName: node
   linkType: hard
 
@@ -1381,15 +1381,6 @@ __metadata:
     "@types/express-serve-static-core": "npm:^5.0.0"
     "@types/serve-static": "npm:^2"
   checksum: 10c0/f1071e3389a955d4f9a38aae38634121c7cd9b3171ba4201ec9b56bd534aba07866839d278adc0dda05b942b05a901a02fd174201c3b1f70ce22b10b6c68f24b
-  languageName: node
-  linkType: hard
-
-"@types/follow-redirects@npm:^1.14.4":
-  version: 1.14.4
-  resolution: "@types/follow-redirects@npm:1.14.4"
-  dependencies:
-    "@types/node": "npm:*"
-  checksum: 10c0/5e0d09e6c9a8bee09b1af9e1fce80fcc2e22f082d786b2f25aa5ccb3be996cf8b9ba866024e17817e01e961586aa2aad13c38c6c3a0dabbe8654d4b47d07977c
   languageName: node
   linkType: hard
 
@@ -1703,7 +1694,7 @@ __metadata:
     "@navikt/oasis": "npm:^4.1.4"
     "@navikt/pino-logger": "npm:^5.0.0"
     "@portabletext/react": "npm:^6.0.3"
-    "@sanity/client": "npm:^7.20.0"
+    "@sanity/client": "npm:^7.22.0"
     "@types/express": "npm:^5.0.6"
     "@types/react": "npm:^19.2.14"
     "@types/react-dom": "npm:^19.2.3"
@@ -3049,17 +3040,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-it@npm:^8.7.0":
-  version: 8.7.1
-  resolution: "get-it@npm:8.7.1"
+"get-it@npm:^8.7.2":
+  version: 8.7.2
+  resolution: "get-it@npm:8.7.2"
   dependencies:
-    "@types/follow-redirects": "npm:^1.14.4"
     decompress-response: "npm:^7.0.0"
-    follow-redirects: "npm:^1.15.11"
     is-retry-allowed: "npm:^2.2.0"
     through2: "npm:^4.0.2"
     tunnel-agent: "npm:^0.6.0"
-  checksum: 10c0/1c19c5e7de87923fe82a9c598c32e9ee16fc8e8f814ea2b389b46305ce4a92125c7c6b93339c4e00eedf099c4a4d59ab4823b9ff316a9952249db8d3afa09d22
+  checksum: 10c0/4abcc9f7976b161550c6d64a6e4925dfa4f116cf966dd92897835ac83e1f8acdd8fd7eff0f4e589cb3261971893408375cf6d9537a1a9d666c766f156a17b010
   languageName: node
   linkType: hard
 
