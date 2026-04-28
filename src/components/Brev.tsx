@@ -106,7 +106,17 @@ function FaktagrunnlagComponent(
     const verdi =
       faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ?? `<${props.value.visningsnavn}>`;
 
-    return <span>{verdi}</span>;
+    const out = verdi.split('\n');
+    return (
+      <>
+        {out.map((line, index) => (
+          <>
+            {line}
+            {out.length !== index && <br />}
+          </>
+        ))}
+      </>
+    );
   };
 }
 
