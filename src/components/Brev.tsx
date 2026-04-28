@@ -99,6 +99,64 @@ const brevmalPortableTextReactComponents = (
   },
 });
 
+interface ParsedVerdiLine {
+  startDay: string;
+  startMonthYear: string;
+  endDay: string;
+  endMonthYear: string;
+  label: string;
+  percentage?: string;
+}
+
+const VERDI_LINE_PATTERN =
+  /^(\d{1,2})\. (\w+ \d{4}) - (\d{1,2})\. (\w+ \d{4}): (.+?)(?:\s+(\d+(?:[,.]\d+)?%))?$/;
+
+export function parseVerdiLine(line: string): ParsedVerdiLine | null {
+  const match = line.match(VERDI_LINE_PATTERN);
+  if (!match) return null;
+  return {
+    startDay: match[1],
+    startMonthYear: match[2],
+    endDay: match[3],
+    endMonthYear: match[4],
+    label: match[5],
+    percentage: match[6],
+  };
+}
+
+const verdiTableStyle: React.CSSProperties = {
+  borderCollapse: 'collapse',
+  borderSpacing: 0,
+};
+
+const tdStyle: React.CSSProperties = {
+  padding: '0 2px',
+  verticalAlign: 'top',
+};
+
+const VerdiTable = ({ rows }: { rows: ParsedVerdiLine[] }) => {
+  const hasPercentage = rows.some((row) => row.percentage !== undefined);
+  return (
+    <table style={verdiTableStyle}>
+      <tbody>
+        {rows.map((row, index) => (
+          <tr key={index}>
+            <td style={{ ...tdStyle, textAlign: 'right', whiteSpace: 'nowrap' }}>{row.startDay}.</td>
+            <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{row.startMonthYear}</td>
+            <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>–</td>
+            <td style={{ ...tdStyle, textAlign: 'right', whiteSpace: 'nowrap' }}>{row.endDay}.</td>
+            <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{row.endMonthYear}:</td>
+            <td style={{ ...tdStyle }}>{row.label}</td>
+            {hasPercentage && (
+              <td style={{ ...tdStyle, textAlign: 'right', whiteSpace: 'nowrap' }}>{row.percentage ?? ''}</td>
+            )}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
 function FaktagrunnlagComponent(
   faktagrunnlag: { tekniskNavn: string; verdi: string }[]
 ): PortableTextTypeComponent<PortableTextFaktagrunnlag> {
@@ -106,13 +164,19 @@ function FaktagrunnlagComponent(
     const verdi =
       faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ?? `<${props.value.visningsnavn}>`;
 
-    const out = verdi.split('\n');
+    const lines = verdi.split('\n');
+    const parsedLines = lines.map(parseVerdiLine);
+
+    if (lines.length > 1 && parsedLines.every((parsed) => parsed !== null)) {
+      return <VerdiTable rows={parsedLines as ParsedVerdiLine[]} />;
+    }
+
     return (
       <>
-        {out.map((line, index) => (
+        {lines.map((line, index) => (
           <>
             {line}
-            {out.length - 1 !== index && <br />}
+            {lines.length - 1 !== index && <br />}
           </>
         ))}
       </>
