@@ -5,6 +5,7 @@ import { flettBrev } from './brevService.js';
 import { brevmalToPdf } from './pdfService';
 import { GenererPdfRequest } from './pdfModell';
 import { hentBrevmal } from './brevmalService';
+import { genererHtml } from './components/GenererHtml';
 
 const router = express.Router();
 
@@ -42,6 +43,19 @@ router.get('/brevmal', async (req, res, next) => {
   try {
     const brevmal = await hentBrevmal(brevtype, språk);
     res.send(brevmal);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/html-preview', async (req, res, next) => {
+  try {
+    const json: GenererPdfRequest = req.body;
+    const markup = genererHtml(json);
+
+    res.header('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(markup);
   } catch (err) {
     next(err);
   }
