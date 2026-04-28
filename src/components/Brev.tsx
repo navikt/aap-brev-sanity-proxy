@@ -112,7 +112,7 @@ function FaktagrunnlagComponent(
         {out.map((line, index) => (
           <>
             {line}
-            {out.length !== index && <br />}
+            {out.length - 1 !== index && <br />}
           </>
         ))}
       </>
