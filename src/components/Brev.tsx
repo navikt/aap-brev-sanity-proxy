@@ -101,26 +101,30 @@ const brevmalPortableTextReactComponents = (
 
 interface ParsedVerdiLine {
   startDay: string;
-  startMonthYear: string;
+  startMonth: string;
+  startYear: string;
   endDay: string;
-  endMonthYear: string;
+  endMonth: string;
+  endYear: string;
   label: string;
   percentage?: string;
 }
 
 const VERDI_LINE_PATTERN =
-  /^(\d{1,2})\. (\w+ \d{4}) - (\d{1,2})\. (\w+ \d{4}): (.+?)(?:\s+(\d+(?:[,.]\d+)?%))?$/;
+  /^(\d{1,2})\. (\w+) (\d{4}) - (\d{1,2})\. (\w+) (\d{4}): (.+?)(?:\s+(\d+(?:[,.]\d+)?%))?$/;
 
 export function parseVerdiLine(line: string): ParsedVerdiLine | null {
   const match = line.match(VERDI_LINE_PATTERN);
   if (!match) return null;
   return {
     startDay: match[1],
-    startMonthYear: match[2],
-    endDay: match[3],
-    endMonthYear: match[4],
-    label: match[5],
-    percentage: match[6],
+    startMonth: match[2],
+    startYear: match[3],
+    endDay: match[4],
+    endMonth: match[5],
+    endYear: match[6],
+    label: match[7],
+    percentage: match[8],
   };
 }
 
@@ -142,13 +146,17 @@ const VerdiTable = ({ rows }: { rows: ParsedVerdiLine[] }) => {
         {rows.map((row, index) => (
           <tr key={index}>
             <td style={{ ...tdStyle, textAlign: 'right', whiteSpace: 'nowrap' }}>{row.startDay}.</td>
-            <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{row.startMonthYear}</td>
+            <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{row.startMonth}</td>
+            <td style={{ ...tdStyle, whiteSpace: 'nowrap', paddingRight: '6px' }}>{row.startYear}</td>
             <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>–</td>
-            <td style={{ ...tdStyle, textAlign: 'right', whiteSpace: 'nowrap' }}>{row.endDay}.</td>
-            <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{row.endMonthYear}:</td>
+            <td style={{ ...tdStyle, textAlign: 'right', whiteSpace: 'nowrap', paddingLeft: '6px' }}>{row.endDay}.</td>
+            <td style={{ ...tdStyle, whiteSpace: 'nowrap' }}>{row.endMonth}</td>
+            <td style={{ ...tdStyle, whiteSpace: 'nowrap', paddingRight: '8px' }}>{row.endYear}:</td>
             <td style={{ ...tdStyle }}>{row.label}</td>
             {hasPercentage && (
-              <td style={{ ...tdStyle, textAlign: 'right', whiteSpace: 'nowrap' }}>{row.percentage ?? ''}</td>
+              <td style={{ ...tdStyle, textAlign: 'right', whiteSpace: 'nowrap', paddingLeft: '8px' }}>
+                {row.percentage ?? ''}
+              </td>
             )}
           </tr>
         ))}
