@@ -10,6 +10,7 @@ import {
   DelmalType,
   FritekstType,
   PortableTextFaktagrunnlag,
+  PortableTextTabell,
   TekstType,
   ValgRef,
 } from '../brevmalTyper';
@@ -93,6 +94,7 @@ const brevmalPortableTextReactComponents = (
 ): Partial<PortableTextReactComponents> => ({
   types: {
     faktagrunnlag: FaktagrunnlagComponent(brevdata.faktagrunnlag),
+    tabeller: TabellerComponent(brevdata.tabeller),
     valgRef: ValgComponent(brevdata),
     fritekst: FritekstComponent(delmalId, brevdata),
     betingetTekstRef: BetingetTekstComponent(brevdata),
@@ -116,6 +118,38 @@ function FaktagrunnlagComponent(
           </>
         ))}
       </>
+    );
+  };
+}
+
+function TabellerComponent(
+  tabeller: { tekniskNavn: string; rader: { celler: { kolonne: string; verdi: string }[] }[] }[]
+): PortableTextTypeComponent<PortableTextTabell> {
+  return (props) => {
+    const tabell = tabeller.find((x) => x.tekniskNavn === props.value.tekniskNavn);
+    if (!tabell || tabell.rader.length === 0) return null;
+
+    const kolonner = tabell.rader[0].celler.map((celle) => celle.kolonne);
+
+    return (
+      <table>
+        <thead>
+          <tr>
+            {kolonner.map((kolonne) => (
+              <th key={kolonne}>{kolonne}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {tabell.rader.map((rad, radIndex) => (
+            <tr key={radIndex}>
+              {rad.celler.map((celle, celleIndex) => (
+                <td key={celleIndex}>{celle.verdi}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     );
   };
 }

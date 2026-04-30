@@ -44,6 +44,17 @@ export interface PortableTextFaktagrunnlag extends TypedObject {
   tekniskNavn: string;
 }
 
+export interface PortableTextTabell extends TypedObject {
+  _type: 'tabell';
+  tekniskNavn: string;
+  rader: {
+    celler: {
+      kolonne: string;
+      verdi: string;
+    }[];
+  }[];
+}
+
 export type EditorTypes = BetingetTekstType | PortableTextBlock | ValgRef | FritekstType;
 
 export interface DelmalType extends TypedObject {

@@ -6,6 +6,15 @@ export interface BrevdataType {
     tekniskNavn: string;
     verdi: string;
   }[];
+  tabeller: {
+    tekniskNavn: string;
+    rader: {
+      celler: {
+        kolonne: string
+        verdi: string;
+      }[];
+    }[];
+  }[];
   valg: {
     id: string;
     key: string;
