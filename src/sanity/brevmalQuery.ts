@@ -112,6 +112,15 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
             tekniskNavn
           }
         },
+        _type == 'tabell' => {
+          _key,
+          _type,
+          tekniskNavn,
+          kolonner[] {
+            "overskrift": (overskrift[_key == ].value)[0],
+            tekniskNavn
+          }
+        },
         _type == 'fritekst' => {
           ...,
           _key,

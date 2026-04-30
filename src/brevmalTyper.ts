@@ -47,12 +47,7 @@ export interface PortableTextFaktagrunnlag extends TypedObject {
 export interface PortableTextTabell extends TypedObject {
   _type: 'tabell';
   tekniskNavn: string;
-  rader: {
-    celler: {
-      kolonne: string;
-      verdi: string;
-    }[];
-  }[];
+  kolonner: { overskrift: string; tekniskNavn: string }[];
 }
 
 export type EditorTypes = BetingetTekstType | PortableTextBlock | ValgRef | FritekstType;

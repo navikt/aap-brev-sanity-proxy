@@ -94,7 +94,7 @@ const brevmalPortableTextReactComponents = (
 ): Partial<PortableTextReactComponents> => ({
   types: {
     faktagrunnlag: FaktagrunnlagComponent(brevdata.faktagrunnlag),
-    tabeller: TabellerComponent(brevdata.tabeller),
+    tabell: TabellerComponent(brevdata.tabeller),
     valgRef: ValgComponent(brevdata),
     fritekst: FritekstComponent(delmalId, brevdata),
     betingetTekstRef: BetingetTekstComponent(brevdata),
@@ -123,29 +123,46 @@ function FaktagrunnlagComponent(
 }
 
 function TabellerComponent(
-  tabeller: { tekniskNavn: string; rader: { celler: { kolonne: string; verdi: string }[] }[] }[]
+  tabeller: BrevdataType['tabeller']
 ): PortableTextTypeComponent<PortableTextTabell> {
+  // This is a "factory function" — it returns a React component (a function that returns JSX).
+  // The pattern is used here instead of a plain component because we need to close over `tabeller`
+  // (the runtime data) while PortableText controls how the component is called with `props`.
+  //
+  // `props.value` is the tabell block from the Sanity template. It carries:
+  //   - tekniskNavn: identifies which table in the runtime data to use
+  //   - kolonner:    the ordered column definitions with human-readable overskrift headings
+  //
+  // `tabeller` is the runtime data from the backend (brevdata.tabeller), each entry carrying
+  // rows with cells keyed by their own tekniskNavn.
   return (props) => {
-    const tabell = tabeller.find((x) => x.tekniskNavn === props.value.tekniskNavn);
+    // Find the matching table in the runtime data by its technical name.
+    // Using the optional chaining (?.) keeps this safe if tabeller is empty.
+    const tabell = tabeller?.find((t) => t.tekniskNavn === props.value.tekniskNavn);
+
+    // Render nothing if there is no data or no rows — avoids empty tables in the letter.
     if (!tabell || tabell.rader.length === 0) return null;
 
-    const kolonner = tabell.rader[0].celler.map((celle) => celle.kolonne);
+    // Column order and headings come from the Sanity template, not from the data.
+    // This lets editors control presentation without touching the backend.
+    const kolonner = props.value.kolonner;
 
     return (
       <table>
         <thead>
           <tr>
             {kolonner.map((kolonne) => (
-              <th key={kolonne}>{kolonne}</th>
+              <th key={kolonne.tekniskNavn}>{kolonne.overskrift}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {tabell.rader.map((rad, radIndex) => (
             <tr key={radIndex}>
-              {rad.celler.map((celle, celleIndex) => (
-                <td key={celleIndex}>{celle.verdi}</td>
-              ))}
+              {kolonner.map((kolonne) => {
+                const verdi = rad.celler.find((c) => c.kolonne === kolonne.tekniskNavn)?.verdi ?? '';
+                return <td key={kolonne.tekniskNavn}>{verdi}</td>;
+              })}
             </tr>
           ))}
         </tbody>
