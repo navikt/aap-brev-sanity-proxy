@@ -57,21 +57,35 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
                   beskrivelse,
                   "teksteditor": (teksteditor[_key == $lang].value)[0][] {
                     ...,
-                    _id,
-                    children[] {
+                    _type == 'block' => {
                       ...,
                       _key,
-                      _type != 'faktagrunnlag' => {
-                        ...
-                      },
-                      _type == 'faktagrunnlag' => @-> {
+                      children[] {
                         ...,
-                        _id,
-                        datatype,
-                        tekniskNavn,
-                        visningsnavn
+                        _key,
+                        _type != 'faktagrunnlag' => {
+                          ...
+                        },
+                        _type == 'faktagrunnlag' => @-> {
+                          ...,
+                          _id,
+                          datatype,
+                          tekniskNavn,
+                          visningsnavn
+                        }
                       }
-                    }
+                    },
+                    _type == 'tabell' => {
+                      _key,
+                      ...@-> {
+                        _type,
+                        tekniskNavn,
+                        kolonner[] {
+                          "overskrift": (overskrift[_key == $lang].value)[0],
+                          tekniskNavn
+                        }
+                      }
+                    },
                   }
                 },
                 kategori -> {
@@ -114,11 +128,13 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
         },
         _type == 'tabell' => {
           _key,
-          _type,
-          tekniskNavn,
-          kolonner[] {
-            "overskrift": (overskrift[_key == ].value)[0],
-            tekniskNavn
+          ...@-> {
+            _type,
+            tekniskNavn,
+            kolonner[] {
+              "overskrift": (overskrift[_key == $lang].value)[0],
+              tekniskNavn
+            }
           }
         },
         _type == 'fritekst' => {
