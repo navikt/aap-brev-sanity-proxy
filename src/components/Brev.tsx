@@ -140,7 +140,7 @@ function TabellerComponent(
         <thead>
           <tr>
             {kolonner.map((kolonne) => (
-              <th key={kolonne.tekniskNavn}>{storForbokstav(kolonne.overskrift)}</th>
+              <th key={kolonne.tekniskNavn}>{kolonne.overskrift}</th>
             ))}
           </tr>
         </thead>
@@ -150,6 +150,7 @@ function TabellerComponent(
               {kolonner.map((kolonne) => {
                 const verdi = rad.celler.find((c) => c.kolonne === kolonne.tekniskNavn)?.verdi ?? '';
                 if (verdi.includes('%')) return (<td className="text-right" key={kolonne.tekniskNavn}>{verdi}</td>)
+                if (kolonne.tekniskNavn.toLowerCase().includes("ytelse")) return (<td key={kolonne.tekniskNavn}>{storForbokstav(verdi)}</td>)
                 return <td key={kolonne.tekniskNavn}>{verdi}</td>;
               })}
             </tr>
