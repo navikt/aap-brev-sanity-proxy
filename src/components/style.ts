@@ -65,6 +65,10 @@ export const style = (saksnummer?: string) => `
     .avoid-page-break {
         page-break-inside: avoid;
     }
+    
+    .text-right {
+      text-align: right;
+    }
 
     .signatur p {
         margin: 0;
