@@ -65,6 +65,17 @@ export const style = (saksnummer?: string) => `
     .avoid-page-break {
         page-break-inside: avoid;
     }
+    
+    .text-right {
+      text-align: right;
+    }
+
+    table td, table th {
+        padding-right: 1rem;
+    }
+    table td:last-child, table th:last-child {
+        padding-right: 0;
+    }
 
     .signatur p {
         margin: 0;

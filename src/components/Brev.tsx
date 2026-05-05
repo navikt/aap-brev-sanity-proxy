@@ -126,30 +126,17 @@ function FaktagrunnlagComponent(
 function TabellerComponent(
   tabeller: BrevdataType['tabeller']
 ): PortableTextTypeComponent<PortableTextTabell> {
-  // This is a "factory function" — it returns a React component (a function that returns JSX).
-  // The pattern is used here instead of a plain component because we need to close over `tabeller`
-  // (the runtime data) while PortableText controls how the component is called with `props`.
-  //
-  // `props.value` is the tabell block from the Sanity template. It carries:
-  //   - tekniskNavn: identifies which table in the runtime data to use
-  //   - kolonner:    the ordered column definitions with human-readable overskrift headings
-  //
-  // `tabeller` is the runtime data from the backend (brevdata.tabeller), each entry carrying
-  // rows with cells keyed by their own tekniskNavn.
+
   return (props) => {
-    // Find the matching table in the runtime data by its technical name.
-    // Using the optional chaining (?.) keeps this safe if tabeller is empty.
     const tabell = tabeller?.find((t) => t.tekniskNavn === props.value.tekniskNavn);
 
-    // Render nothing if there is no data or no rows — avoids empty tables in the letter.
     if (!tabell || tabell.rader.length === 0) return null;
 
-    // Column order and headings come from the Sanity template, not from the data.
-    // This lets editors control presentation without touching the backend.
     const kolonner = props.value.kolonner;
+    const storForbokstav = (str: string) => str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : "";
 
     return (
-      <table>
+      <table className="avoid-page-break">
         <thead>
           <tr>
             {kolonner.map((kolonne) => (
@@ -162,6 +149,8 @@ function TabellerComponent(
             <tr key={radIndex}>
               {kolonner.map((kolonne) => {
                 const verdi = rad.celler.find((c) => c.kolonne === kolonne.tekniskNavn)?.verdi ?? '';
+                if (verdi.includes('%')) return (<td className="text-right" key={kolonne.tekniskNavn}>{verdi}</td>)
+                if (kolonne.tekniskNavn.toLowerCase().includes("ytelse")) return (<td key={kolonne.tekniskNavn}>{storForbokstav(verdi)}</td>)
                 return <td key={kolonne.tekniskNavn}>{verdi}</td>;
               })}
             </tr>
