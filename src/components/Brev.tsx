@@ -47,10 +47,10 @@ export const Brev = ({ mottaker, saksnummer, brevmal, brevdata, dato, signaturer
             {brevmal.delmaler
               .filter((delmalRef) => brevdata.delmaler.find((valgtDelmal) => valgtDelmal.id === delmalRef.delmal._id))
               .map((delmalRef) => (
-                <>
+                <div id={`brev_${delmalRef._key}`}>
                   <h2>{delmalRef.delmal.overskrift}</h2>
                   <DelmalEditor delmal={delmalRef.delmal} brevdata={brevdata} />
-                </>
+                </div>
               ))}
           </div>
           <Signatur signaturer={signaturer} />
@@ -84,7 +84,9 @@ const Teksteditor = (props: TeksteditorProps) => {
   return (
     <PortableText
       value={props.tekst.teksteditor}
-      components={{ types: { faktagrunnlag: FaktagrunnlagComponent(props.faktagrunnlag), tabell: TabellerComponent(props.tabell) } }}
+      components={{
+        types: { faktagrunnlag: FaktagrunnlagComponent(props.faktagrunnlag), tabell: TabellerComponent(props.tabell) },
+      }}
     />
   );
 };
@@ -123,17 +125,14 @@ function FaktagrunnlagComponent(
   };
 }
 
-function TabellerComponent(
-  tabeller: BrevdataType['tabeller']
-): PortableTextTypeComponent<PortableTextTabell> {
-
+function TabellerComponent(tabeller: BrevdataType['tabeller']): PortableTextTypeComponent<PortableTextTabell> {
   return (props) => {
     const tabell = tabeller?.find((t) => t.tekniskNavn === props.value.tekniskNavn);
 
     if (!tabell || tabell.rader.length === 0) return null;
 
     const kolonner = props.value.kolonner;
-    const storForbokstav = (str: string) => str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : "";
+    const storForbokstav = (str: string) => (str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : '');
 
     return (
       <table className="avoid-page-break">
@@ -148,8 +147,10 @@ function TabellerComponent(
           {tabell.rader.map((rad, radIndex) => (
             <tr key={radIndex}>
               {kolonner.map((kolonne) => {
-                const verdi = rad.celler.find((c) => c.kolonne === kolonne.tekniskNavn)?.verdi.replace('%', ' prosent') ?? '';
-                if (kolonne.tekniskNavn.toLowerCase().includes("ytelse")) return (<td key={kolonne.tekniskNavn}>{storForbokstav(verdi)}</td>)
+                const verdi =
+                  rad.celler.find((c) => c.kolonne === kolonne.tekniskNavn)?.verdi.replace('%', ' prosent') ?? '';
+                if (kolonne.tekniskNavn.toLowerCase().includes('ytelse'))
+                  return <td key={kolonne.tekniskNavn}>{storForbokstav(verdi)}</td>;
                 return <td key={kolonne.tekniskNavn}>{verdi}</td>;
               })}
             </tr>
@@ -166,7 +167,9 @@ function ValgComponent(brevdata: BrevdataType): PortableTextTypeComponent<ValgRe
     const alternativ = props.value.valg.alternativer.find((alternativ) => alternativ._key === valgData?.key);
     switch (alternativ?._type) {
       case 'kategorisertTekstRef':
-        return <Teksteditor tekst={alternativ.tekst} faktagrunnlag={brevdata.faktagrunnlag} tabell={brevdata.tabeller} />;
+        return (
+          <Teksteditor tekst={alternativ.tekst} faktagrunnlag={brevdata.faktagrunnlag} tabell={brevdata.tabeller} />
+        );
       case 'fritekst': {
         const fritekst = brevdata.fritekster.find(
           (fritekst) => fritekst.parentId === props.value.valg._id && alternativ._key === fritekst.key
@@ -197,7 +200,9 @@ function FritekstComponent(delmalId: string, brevdata: BrevdataType): PortableTe
 function BetingetTekstComponent(brevdata: BrevdataType): PortableTextTypeComponent<BetingetTekstType> {
   return (props) => {
     if (brevdata.betingetTekst.find((betingetTekst) => betingetTekst.id === props.value.tekst._id)) {
-      return <Teksteditor tekst={props.value.tekst} faktagrunnlag={brevdata.faktagrunnlag} tabell={brevdata.tabeller}/>;
+      return (
+        <Teksteditor tekst={props.value.tekst} faktagrunnlag={brevdata.faktagrunnlag} tabell={brevdata.tabeller} />
+      );
     }
     return null;
   };
