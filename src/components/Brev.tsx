@@ -149,7 +149,6 @@ function TabellerComponent(
             <tr key={radIndex}>
               {kolonner.map((kolonne) => {
                 const verdi = rad.celler.find((c) => c.kolonne === kolonne.tekniskNavn)?.verdi ?? '';
-                if (verdi.includes('%')) return (<td className="text-right" key={kolonne.tekniskNavn}>{verdi}</td>)
                 if (kolonne.tekniskNavn.toLowerCase().includes("ytelse")) return (<td key={kolonne.tekniskNavn}>{storForbokstav(verdi)}</td>)
                 return <td key={kolonne.tekniskNavn}>{verdi}</td>;
               })}
