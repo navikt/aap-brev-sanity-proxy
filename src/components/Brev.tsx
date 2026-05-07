@@ -168,7 +168,9 @@ function ValgComponent(brevdata: BrevdataType): PortableTextTypeComponent<ValgRe
     switch (alternativ?._type) {
       case 'kategorisertTekstRef':
         return (
-          <Teksteditor tekst={alternativ.tekst} faktagrunnlag={brevdata.faktagrunnlag} tabell={brevdata.tabeller} />
+          <div id={`valg_${valgData?.id}`}>
+            <Teksteditor tekst={alternativ.tekst} faktagrunnlag={brevdata.faktagrunnlag} tabell={brevdata.tabeller} />
+          </div>
         );
       case 'fritekst': {
         const fritekst = brevdata.fritekster.find(
