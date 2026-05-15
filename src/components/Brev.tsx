@@ -192,7 +192,7 @@ function FritekstComponent(delmalId: string, brevdata: BrevdataType): PortableTe
     const fritekst = brevdata.fritekster.find(
       (fritekst) => fritekst.parentId === delmalId && fritekst.key === props.value._key
     )?.fritekst;
-    if (fritekst) {
+    if (fritekst && fritekst.tekst) {
       return <span>{fritekst.tekst}</span>;
     }
     return null;
