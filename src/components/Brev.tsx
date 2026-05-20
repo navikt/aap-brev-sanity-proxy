@@ -65,7 +65,7 @@ interface DelmalEditorProps {
   brevdata: BrevdataType;
 }
 
-const DelmalEditor = (props: DelmalEditorProps) => {
+export const DelmalEditor = (props: DelmalEditorProps) => {
   return (
     <PortableText
       value={props.delmal.teksteditor}
