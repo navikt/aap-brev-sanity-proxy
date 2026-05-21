@@ -6,6 +6,17 @@ import { GenererPdfRequest } from '../pdfModell';
 import { Header } from './Header';
 import { Signatur } from './Signatur';
 
+interface InnholdNode {
+  htmlString: string;
+  sanityNoekkel?: string;
+}
+
+interface BrevpreviewResponse {
+  header: InnholdNode;
+  delmaler: InnholdNode[];
+  signaturer: InnholdNode;
+}
+
 export const genererHtml = (request: GenererPdfRequest) => {
   return renderToStaticMarkup(
     <Brev
@@ -22,23 +33,21 @@ export const genererHtml = (request: GenererPdfRequest) => {
 export const genererJSON = (request: GenererPdfRequest) => {
   const { mottaker, saksnummer, dato, brevmal, brevdata, signaturer } = request;
 
-  const delmaler = brevmal.delmaler
+  const delmaler: InnholdNode[] = brevmal.delmaler
     .filter((delmalRef) => brevdata.delmaler.find((valgtDelmal) => valgtDelmal.id === delmalRef.delmal._id))
-    .map((delmalRef) => {
-      return {
-        key: delmalRef._key,
-        content: renderToStaticMarkup(
-          <div id={`brev_${delmalRef._key}`}>
-            <h2>{delmalRef.delmal.overskrift}</h2>
-            <DelmalEditor delmal={delmalRef.delmal} brevdata={brevdata} />
-          </div>
-        ),
-      };
-    });
+    .map((delmalRef) => ({
+      sanityNoekkel: delmalRef._key,
+      htmlString: renderToStaticMarkup(
+        <div id={`brev_${delmalRef._key}`}>
+          <h2>{delmalRef.delmal.overskrift}</h2>
+          <DelmalEditor delmal={delmalRef.delmal} brevdata={brevdata} />
+        </div>
+      ),
+    }));
 
-  const json = {
+  const json: BrevpreviewResponse = {
     header: {
-      content: renderToStaticMarkup(
+      htmlString: renderToStaticMarkup(
         <>
           <Header mottaker={mottaker} saksnummer={saksnummer} dato={dato} />
           <div className="title-wrapper">
@@ -49,7 +58,7 @@ export const genererJSON = (request: GenererPdfRequest) => {
     },
     delmaler: delmaler,
     signaturer: {
-      content: renderToStaticMarkup(<Signatur signaturer={signaturer} />),
+      htmlString: renderToStaticMarkup(<Signatur signaturer={signaturer} />),
     },
   };
   return JSON.stringify(json);
