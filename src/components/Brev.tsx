@@ -15,6 +15,7 @@ import {
   ValgRef,
 } from '../brevmalTyper';
 import { BrevdataType } from '../brevdataTyper';
+import { stripEmptyPortableTextBlocks } from './portableTextUtils';
 
 interface Props {
   mottaker: MottakerModell;
@@ -68,7 +69,7 @@ interface DelmalEditorProps {
 export const DelmalEditor = (props: DelmalEditorProps) => {
   return (
     <PortableText
-      value={props.delmal.teksteditor}
+      value={stripEmptyPortableTextBlocks(props.delmal.teksteditor)}
       components={brevmalPortableTextReactComponents(props.delmal._id, props.brevdata)}
     />
   );
@@ -83,7 +84,7 @@ interface TeksteditorProps {
 const Teksteditor = (props: TeksteditorProps) => {
   return (
     <PortableText
-      value={props.tekst.teksteditor}
+      value={stripEmptyPortableTextBlocks(props.tekst.teksteditor)}
       components={{
         types: { faktagrunnlag: FaktagrunnlagComponent(props.faktagrunnlag), tabell: TabellerComponent(props.tabell) },
       }}
