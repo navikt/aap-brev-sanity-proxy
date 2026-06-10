@@ -48,7 +48,7 @@ export const Brev = ({ mottaker, saksnummer, brevmal, brevdata, dato, signaturer
               .filter((delmalRef) => brevdata.delmaler.find((valgtDelmal) => valgtDelmal.id === delmalRef.delmal._id))
               .map((delmalRef) => (
                 <div id={`brev_${delmalRef._key}`}>
-                  <h2>{delmalRef.delmal.overskrift}</h2>
+                  {delmalRef.delmal.overskrift && <h2>{delmalRef.delmal.overskrift}</h2>}
                   <DelmalEditor delmal={delmalRef.delmal} brevdata={brevdata} />
                 </div>
               ))}

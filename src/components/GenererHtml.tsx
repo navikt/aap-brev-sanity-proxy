@@ -39,7 +39,7 @@ export const genererJSON = (request: GenererPdfRequest) => {
       sanityNoekkel: delmalRef._key,
       htmlString: renderToStaticMarkup(
         <div id={`brev_${delmalRef._key}`}>
-          <h2>{delmalRef.delmal.overskrift}</h2>
+          {delmalRef.delmal.overskrift && <h2>{delmalRef.delmal.overskrift}</h2>}
           <DelmalEditor delmal={delmalRef.delmal} brevdata={brevdata} />
         </div>
       ),
