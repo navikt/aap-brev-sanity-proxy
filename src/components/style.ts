@@ -70,6 +70,15 @@ export const style = (saksnummer?: string) => `
       text-align: right;
     }
 
+    table th {
+        text-align: left;
+    }
+    
+    table {
+        border-collapse: separate; 
+        border-spacing: 1.5rem 0; 
+    }
+
     table td, table th {
         padding-right: 1rem;
     }
