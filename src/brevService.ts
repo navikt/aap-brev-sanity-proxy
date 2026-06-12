@@ -25,6 +25,8 @@ const brevtypeTilSanityId = {
   [Brevtype.INNVILGELSE]: '37594d86-38d4-4f2a-9b75-cdc0cbe02e08',
   [Brevtype.VEDTAK_11_17]: '7365300c-6651-4b92-a2d9-6accd8b89b16',
   [Brevtype.VEDTAK_11_18]: 'd27e357b-bc38-4c8c-8ae5-4e398fc854a3',
+  [Brevtype.VEDTAK_11_18_OPPHØR_DELVIS_UFØR]: '17f19410-0908-4301-a5a0-bee0587a9a15',
+  [Brevtype.VEDTAK_11_18_OPPHØR_FULL_UFØR]: '3188a9cd-7227-448f-97e4-680631f47cd2',
   [Brevtype.VEDTAK_11_23_SJETTE_LEDD]: '2f904e2e-abde-4bda-9613-851845be2dc9',
   [Brevtype.AVSLAG]: '540d061b-0772-4e78-b078-40483c0192f2',
   [Brevtype.VARSEL_OM_BESTILLING]: 'c16dc9a8-d41c-4a73-bc79-af95902d40c3',
