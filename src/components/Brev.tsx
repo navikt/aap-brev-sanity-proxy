@@ -152,7 +152,7 @@ function TabellerComponent(tabeller: BrevdataType['tabeller']): PortableTextType
                   rad.celler.find((c) => c.kolonne === kolonne.tekniskNavn)?.verdi.replace('%', ' prosent') ?? '';
                 if (kolonne.tekniskNavn.toLowerCase().includes('ytelse'))
                   return <td key={kolonne.tekniskNavn}>{storForbokstav(verdi)}</td>;
-                if (kolonne.tekniskNavn.toLowerCase().includes('ARBEIDSINNTEKT'))
+                if (kolonne.tekniskNavn.toLowerCase().includes('arbeidsinntekt'))
                   return <td key={kolonne.tekniskNavn} style={{textAlign: 'right'}}>{verdi}</td>;
                 return <td key={kolonne.tekniskNavn}>{verdi}</td>;
               })}
