@@ -70,20 +70,16 @@ export const style = (saksnummer?: string) => `
       text-align: right;
     }
 
+    table {
+        border-collapse: collapse;
+    }
+    
     table th {
         text-align: left;
     }
     
-    table {
-        border-collapse: separate; 
-        border-spacing: 1.5rem 0; 
-    }
-
-    table td, table th {
-        padding-right: 1rem;
-    }
-    table td:last-child, table th:last-child {
-        padding-right: 0;
+    table td, table th {    
+        padding: 0.5rem 1.25rem;
     }
 
     .signatur p {
