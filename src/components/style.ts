@@ -72,15 +72,17 @@ export const style = (saksnummer?: string) => `
 
     table {
         border-collapse: collapse;
+        width: 100%;
     }
     
-    table th {
-        text-align: left;
-    }
-    
-    table td, table th {    
+    th, td {
         padding: 0.5rem 1.25rem;
     }
+    
+    td + td, th + th {
+        padding-left: 2rem;
+    }
+
 
     .signatur p {
         margin: 0;
