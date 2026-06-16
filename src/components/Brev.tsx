@@ -134,9 +134,10 @@ function TabellerComponent(tabeller: BrevdataType['tabeller']): PortableTextType
 
     const kolonner = props.value.kolonner;
     const storForbokstav = (str: string) => (str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : '');
+    const classnames = `avoid-page-break ${tabell.tekniskNavn === 'ALLE_YRKESSKADER' ? 'yrkesskadetabell' : ''}`;
 
     return (
-      <table className="avoid-page-break">
+      <table className={classnames}>
         <thead>
           <tr>
             {kolonner.map((kolonne) => (
@@ -153,7 +154,11 @@ function TabellerComponent(tabeller: BrevdataType['tabeller']): PortableTextType
                 if (kolonne.tekniskNavn.toLowerCase().includes('ytelse'))
                   return <td key={kolonne.tekniskNavn}>{storForbokstav(verdi)}</td>;
                 if (kolonne.tekniskNavn.toLowerCase().includes('arbeidsinntekt'))
-                  return <td key={kolonne.tekniskNavn} style={{textAlign: 'right'}}>{verdi}</td>;
+                  return (
+                    <td key={kolonne.tekniskNavn} style={{ textAlign: 'right' }}>
+                      {verdi}
+                    </td>
+                  );
                 return <td key={kolonne.tekniskNavn}>{verdi}</td>;
               })}
             </tr>

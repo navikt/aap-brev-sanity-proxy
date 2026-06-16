@@ -71,18 +71,24 @@ export const style = (saksnummer?: string) => `
     }
 
     table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    
-    th, td {
-        padding: 0.5rem 1.25rem;
-    }
-    
-    td + td, th + th {
-        padding-left: 2rem;
+      table-layout: fixed;
+      width: 100%;
     }
 
+    .yrkesskadetabell tr :nth-child(1) {
+      width: 20%;
+    }
+    .yrkesskadetabell tr :nth-child(3) {
+      width: 20%;
+    }
+
+    td {
+      padding-right: 1rem;
+    }
+
+    td:last-child {
+      padding-right: 0;
+    }
 
     .signatur p {
         margin: 0;
