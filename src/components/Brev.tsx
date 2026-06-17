@@ -185,7 +185,7 @@ function ValgComponent(brevdata: BrevdataType): PortableTextTypeComponent<ValgRe
           (fritekst) => fritekst.parentId === props.value.valg._id && alternativ._key === fritekst.key
         )?.fritekst;
         if (fritekst) {
-          return <span>{fritekst.tekst}</span>;
+          return <span style={{ whiteSpace: 'pre-wrap' }}>{fritekst.tekst}</span>;
         }
         return null;
       }
@@ -201,7 +201,7 @@ function FritekstComponent(delmalId: string, brevdata: BrevdataType): PortableTe
       (fritekst) => fritekst.parentId === delmalId && fritekst.key === props.value._key
     )?.fritekst;
     if (fritekst && fritekst.tekst) {
-      return <span>{fritekst.tekst}</span>;
+      return <span style={{ whiteSpace: 'pre-wrap' }}>{fritekst.tekst}</span>;
     }
     return null;
   };
