@@ -4,7 +4,7 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
   ...,
   _id,
   beskrivelse,
-  "overskrift": (overskrift[_key == $lang].value)[0],
+  "overskrift": (overskrift[language == $lang || _key == $lang].value)[0],
   journalposttittel,
   kanSendesAutomatisk,
   delmaler[] {
@@ -15,8 +15,8 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
       ...,
       _id,
       beskrivelse,
-      "overskrift": (overskrift[_key == $lang].value)[0],
-      "teksteditor": (teksteditor[_key == $lang].value)[0][] {
+      "overskrift": (overskrift[language == $lang || _key == $lang].value)[0],
+      "teksteditor": (teksteditor[language == $lang || _key == $lang].value)[0][] {
         ...,
         _type == 'block' => {
           ...,
@@ -55,7 +55,7 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
                 tekst -> {
                   ...,
                   beskrivelse,
-                  "teksteditor": (teksteditor[_key == $lang].value)[0][] {
+                  "teksteditor": (teksteditor[language == $lang || _key == $lang].value)[0][] {
                     ...,
                     _type == 'block' => {
                       ...,
@@ -81,7 +81,7 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
                         _type,
                         tekniskNavn,
                         kolonner[] {
-                          "overskrift": (overskrift[_key == $lang].value)[0],
+                          "overskrift": (overskrift[language == $lang || _key == $lang].value)[0],
                           tekniskNavn
                         }
                       }
@@ -102,7 +102,7 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
           ...,
           tekst -> {
             ...,
-            "teksteditor": (teksteditor[_key == $lang].value)[0][] {
+            "teksteditor": (teksteditor[language == $lang || _key == $lang].value)[0][] {
               ...,
               children[] {
                 _key,
@@ -132,7 +132,7 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
             _type,
             tekniskNavn,
             kolonner[] {
-              "overskrift": (overskrift[_key == $lang].value)[0],
+              "overskrift": (overskrift[language == $lang || _key == $lang].value)[0],
               tekniskNavn
             }
           }
