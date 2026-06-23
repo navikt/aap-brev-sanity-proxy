@@ -1703,7 +1703,7 @@ __metadata:
     eslint: "npm:^10.5.0"
     express: "npm:^5.2.1"
     globals: "npm:^17.6.0"
-    groq: "npm:^5.20.0"
+    groq: "npm:^6.1.0"
     husky: "npm:^9.1.7"
     lint-staged: "npm:^16.4.0"
     nodemon: "npm:^3.1.14"
@@ -3124,10 +3124,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"groq@npm:^5.20.0":
-  version: 5.20.0
-  resolution: "groq@npm:5.20.0"
-  checksum: 10c0/ca7789d658ac6462ad40db59d239ff42051d37a4bb0dec0d128becd291638a6e72d6194ebeedf02bf27ee38a25d1d06595f57409aff3d7c0e053b623a2023c0f
+"groq@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "groq@npm:6.1.0"
+  checksum: 10c0/972586fb390a8e9172ae54a5b2d81df3af140c3be83d0178b02c254635a54c8d3e21ebb7e960716d75e406a930e6254c01374e792d36c936312139ab6967cee1
   languageName: node
   linkType: hard
 
