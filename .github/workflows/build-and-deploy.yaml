@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SKIP_YARN_COREPACK_CHECK: true
+      NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
     permissions:
       contents: read
       id-token: write
@@ -28,8 +29,6 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
       - name: Install dependencies
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
         if: steps.cache-node_modules.outputs.cache-hit != 'true'
         run: yarn install --immutable
       - name: Test
