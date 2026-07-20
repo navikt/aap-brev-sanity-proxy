@@ -1194,27 +1194,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/client@npm:^7.23.0":
-  version: 7.23.0
-  resolution: "@sanity/client@npm:7.23.0"
+"@sanity/client@npm:^7.23.2":
+  version: 7.23.2
+  resolution: "@sanity/client@npm:7.23.2"
   dependencies:
-    "@sanity/eventsource": "npm:^5.0.2"
+    "@sanity/eventsource": "npm:^5.0.4"
     get-it: "npm:^8.8.0"
     nanoid: "npm:^3.3.11"
     rxjs: "npm:^7.0.0"
-  checksum: 10c0/c34bba2a0ab9e0cd4e3c63c43dc5e5d77037a0e079981e865754b66ec81bba0966affde5c78a7dc078a88db8df24242e21746f82e1172d72748dbec4403d5a9b
+  checksum: 10c0/0909bb56b93ebdfe81ed472e851affa48d18651e64c633f1f27836f6a26cf033f54fc1c07664599cf9591e56735c6f68c3904471ff618f0dc4621032c3c39315
   languageName: node
   linkType: hard
 
-"@sanity/eventsource@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "@sanity/eventsource@npm:5.0.2"
+"@sanity/eventsource@npm:^5.0.4":
+  version: 5.0.4
+  resolution: "@sanity/eventsource@npm:5.0.4"
   dependencies:
     "@types/event-source-polyfill": "npm:1.0.5"
     "@types/eventsource": "npm:1.1.15"
     event-source-polyfill: "npm:1.0.31"
     eventsource: "npm:2.0.2"
-  checksum: 10c0/7896e5bf1afd1811db22479ea6c529bf2042c2ef1d17fede26b5eafba839235cff35a53fdb68fa53b90975dba993f884d13a262ca9a729e9d97020f958743cee
+  checksum: 10c0/ef9a6e09105a7623f2b6101d04514bb6eb1a2467452e6520a056c8e1b6f033ccfaeefcdba15dd82804211b4d53ebd6f60fbfd8b24c2c976d5811f1752d71ab82
   languageName: node
   linkType: hard
 
@@ -1694,7 +1694,7 @@ __metadata:
     "@navikt/oasis": "npm:^4.1.4"
     "@navikt/pino-logger": "npm:^5.0.0"
     "@portabletext/react": "npm:^6.2.0"
-    "@sanity/client": "npm:^7.23.0"
+    "@sanity/client": "npm:^7.23.2"
     "@types/express": "npm:^5.0.6"
     "@types/react": "npm:^19.2.14"
     "@types/react-dom": "npm:^19.2.3"
