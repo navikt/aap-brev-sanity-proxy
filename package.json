@@ -20,7 +20,7 @@
   },
   "prettier": "@navikt/aap-felles-prettier",
   "dependencies": {
-    "@navikt/aap-felles-utils": "^5.9.0",
+    "@navikt/aap-felles-utils": "^5.10.0",
     "@navikt/aap-sanity-schema-types": "^0.1.2",
     "@navikt/oasis": "^4.1.4",
     "@navikt/pino-logger": "^5.0.0",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@navikt/aap-felles-prettier": "^5.9.0",
+    "@navikt/aap-felles-prettier": "^5.10.0",
     "@types/express": "^5.0.6",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
