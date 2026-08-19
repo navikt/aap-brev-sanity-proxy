@@ -15,6 +15,7 @@ export const MalQuery = defineQuery(`*[_id==$id && _type=="mal"] {
       ...,
       _id,
       beskrivelse,
+      brevbyggerTittel,
       "overskrift": (overskrift[language == $lang || _key == $lang].value)[0],
       "teksteditor": (teksteditor[language == $lang || _key == $lang].value)[0][] {
         ...,
