@@ -1651,7 +1651,7 @@ __metadata:
     eslint: "npm:^10.8.1"
     express: "npm:^5.2.1"
     globals: "npm:^17.11.0"
-    groq: "npm:^6.9.2"
+    groq: "npm:^6.10.1"
     husky: "npm:^9.1.7"
     lint-staged: "npm:^17.3.0"
     nodemon: "npm:^3.1.14"
@@ -1664,7 +1664,7 @@ __metadata:
     ts-node: "npm:^10.9.2"
     typescript: "npm:^6.0.3"
     typescript-eslint: "npm:^8.67.0"
-    uuid: "npm:^14.0.1"
+    uuid: "npm:^14.0.2"
     vitest: "npm:^4.1.11"
   languageName: unknown
   linkType: soft
@@ -3016,10 +3016,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"groq@npm:^6.9.2":
-  version: 6.9.2
-  resolution: "groq@npm:6.9.2"
-  checksum: 10c0/fe3a061a98d302d9f1d2c158c3b61e23ed5f995f74557d147d756d8013a2385e98f34f553a0e9071409e437a82d3c61a90227d59611a7fff0a8795eb0e3c188d
+"groq@npm:^6.10.1":
+  version: 6.10.1
+  resolution: "groq@npm:6.10.1"
+  checksum: 10c0/f1cdf375b2655d0a730cf00a8ba9c3329fab02a06315a34d3e29789be27380566bc6b62535d54a5301045e4f0abe8daa49da829dc5462ca10f26b8b79157b68c
   languageName: node
   linkType: hard
 
@@ -5400,12 +5400,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^14.0.1":
-  version: 14.0.1
-  resolution: "uuid@npm:14.0.1"
+"uuid@npm:^14.0.2":
+  version: 14.0.2
+  resolution: "uuid@npm:14.0.2"
   bin:
     uuid: dist-node/bin/uuid
-  checksum: 10c0/2d961289097cb68c37d93d1da0b5c3aafc1eb9948a455cca8d0ae53a099b2fe583b8933254a84097f700e6bac2e23033364904df0467c22551d5d9611febcaf6
+  checksum: 10c0/88906237004db370b013129c8372a2149f6fa1aad7a5f78fa65ddf2ba0a8663097022300d81fa01f551efee9d6bbe8c7ab140dc6d49f1b03d289f855096990c9
   languageName: node
   linkType: hard
 
