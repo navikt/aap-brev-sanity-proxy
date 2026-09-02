@@ -22,6 +22,8 @@ const brevtypeTilSanityId = (brevtype: Brevtype) => {
       return 'a24e1610-0d1e-4048-b485-de49d120f004';
     case Brevtype.AVSLAG_UNDER_17_AAR_9_MAANEDER:
       return 'b8b0d045-fdef-4561-999e-3cee4c93633a';
+    case Brevtype.AVSLAG_11_27:
+      return '3a41adcf-4767-45bb-9a33-78f8dd6e75a5';
     case Brevtype.STANS_AV_YTELSE:
       return '0e92d26d-0864-4241-9254-959559368d89';
     default:
