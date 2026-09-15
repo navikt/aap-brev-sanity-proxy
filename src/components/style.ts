@@ -25,7 +25,7 @@ export const style = (saksnummer?: string) => `
         font-family: "Source Sans Pro";
     }
 
-    main {
+    body {
         margin: 40px, 40px, 0, 40px;
     }
 
@@ -50,7 +50,6 @@ export const style = (saksnummer?: string) => `
 
     .signatur-wrapper {
        width: 100%;
-       padding: 4px 0;
        display: block;
     }
 
