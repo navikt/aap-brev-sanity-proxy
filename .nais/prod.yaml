@@ -60,3 +60,4 @@ spec:
       value: http://saksbehandling-pdfgen
   envFrom:
     - secret: sanity-api-read-token
+    - secret: kelvin-unleash-api-token
