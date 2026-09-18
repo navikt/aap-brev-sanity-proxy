@@ -39,6 +39,7 @@ spec:
         - host: cdn.sanity.io
       rules:
         - application: saksbehandling-pdfgen
+        - application: pdfgenerator-saksbehandling
 
   observability:
     autoInstrumentation:
@@ -58,5 +59,7 @@ spec:
       value: published
     - name: PDF_GEN_URL
       value: http://saksbehandling-pdfgen
+    - name: PDFGENERATOR_SAKSBEHANDLING_URL
+      value: http://pdfgenerator-saksbehandling
   envFrom:
     - secret: sanity-api-read-token
