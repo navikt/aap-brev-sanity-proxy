@@ -26,7 +26,7 @@ export const style = (saksnummer?: string) => `
     }
 
     body {
-        margin: 40px, 40px, 0, 40px;
+        margin: 40px 40px 0 40px;
     }
 
      .header {
