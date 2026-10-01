@@ -30,6 +30,7 @@ const brevtypeTilSanityId = {
   [Brevtype.VEDTAK_11_23_SJETTE_LEDD]: '2f904e2e-abde-4bda-9613-851845be2dc9',
   [Brevtype.AVSLAG]: '540d061b-0772-4e78-b078-40483c0192f2',
   [Brevtype.AVSLAG_11_5]: 'a24e1610-0d1e-4048-b485-de49d120f004',
+  [Brevtype.AVSLAG_11_27]: '3a41adcf-4767-45bb-9a33-78f8dd6e75a5',
   [Brevtype.AVSLAG_UNDER_17_AAR_9_MAANEDER]: 'b8b0d045-fdef-4561-999e-3cee4c93633a',
   [Brevtype.VARSEL_OM_BESTILLING]: 'c16dc9a8-d41c-4a73-bc79-af95902d40c3',
   [Brevtype.FORHÅNDSVARSEL_BRUDD_AKTIVITETSPLIKT]: '1da6c37e-f9d4-46ca-8bc0-81430c91b84d',
