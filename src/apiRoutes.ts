@@ -4,8 +4,9 @@ import { flettBrev } from './brevService.js';
 import { hentBrevmal } from './brevmalService';
 import { Brevtype } from './brevtype.js';
 import { genererHtml, genererJSON } from './components/GenererHtml';
+import { isDevGcp } from './envUtils';
 import { GenererPdfRequest } from './pdfModell';
-import { brevmalToPdfNyPdfgenerator } from './pdfService';
+import { brevmalToPdf, brevmalToPdfNyPdfgenerator } from './pdfService';
 import { Språk } from './språk.js';
 
 const router = express.Router();
@@ -78,8 +79,7 @@ router.post('/brevbygger-preview', async (req, res, next) => {
 router.post('/pdf', async (req, res, next) => {
   try {
     const json: GenererPdfRequest = req.body;
-    const pdf = await brevmalToPdfNyPdfgenerator(json);
-
+    const pdf = isDevGcp() ? await brevmalToPdfNyPdfgenerator(json) : await brevmalToPdf(json);
     res.header('Content-Type', 'application/pdf');
     res.setHeader('Content-Type', 'application/pdf');
     res.send(Buffer.from(pdf));
