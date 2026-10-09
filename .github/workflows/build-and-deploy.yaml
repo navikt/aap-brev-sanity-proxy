@@ -1,6 +1,7 @@
 name: Build og deploy
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -70,6 +71,7 @@ jobs:
   deploy-prod:
     needs: [build-and-push, deploy-dev]
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     permissions:
       contents: read
       id-token: write
