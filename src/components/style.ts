@@ -54,11 +54,9 @@ export const style = (saksnummer?: string) => `
     }
 
     .signatur {
-        vertical-align: top;
-        display: inline-block;
-        width: 45%;
-        margin-bottom: 1rem;
-
+      width: 50%;
+      vertical-align: top;
+      padding-bottom: 1rem;
     }
 
     .avoid-page-break {
