@@ -10,10 +10,10 @@ SANITY_PERSPECTIVE="drafts"
 
 SANITY_API_READ_TOKEN="<ditt token her>"
 
-PDF_GEN_URL="http://localhost:8020"
+PDFGENERATOR_SAKSBEHANDLING_URL="http://localhost:8089"
 ```
 `SANITY_PERSPECTIVE` kan settes til `"published"` for publisert innhold som er prod-likt, eller `"drafts"` som er dev-likt.
-`aap-saksbehandling-pdfgen` må kjøre lokalt på angitt url `PDF_GEN_URL`.
+`aap-pdfgenerator-saksbehandling` må kjøre lokalt på angitt url `PDFGENERATOR_SAKSBEHANDLING_URL`.
 
 
 Kjør deretter `yarn install && yarn dev`
@@ -31,7 +31,7 @@ docker run -d --rm -p 8087:8087 \
     -e "SANITY_API_READ_TOKEN=`pbpaste`" \
     -e "SANITY_PROJECT_ID=948n95rd" \
     -e "SANITY_PERSPECTIVE=drafts" \
-    -e "PDF_GEN_URL=http://localhost:8020" \
+    -e "PDFGENERATOR_SAKSBEHANDLING_URL=http://localhost:8089" \
     -e "SANITY_DATASET=production" \
     -e "NODE_ENV=development" \
     aap-brev-sanity-proxy-local-build:latest
