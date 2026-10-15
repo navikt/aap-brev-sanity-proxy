@@ -1,9 +1,7 @@
-import React from 'react';
 import { PortableText, PortableTextReactComponents, PortableTextTypeComponent } from '@portabletext/react';
-import { style } from './style';
-import { Mottaker as MottakerModell, Signatur as SignaturModell } from '../pdfModell';
-import { Header } from './Header';
-import { Signatur } from './Signatur';
+import React from 'react';
+
+import { BrevdataType } from '../brevdataTyper';
 import {
   BetingetTekstType,
   BrevmalType,
@@ -14,8 +12,11 @@ import {
   TekstType,
   ValgRef,
 } from '../brevmalTyper';
-import { BrevdataType } from '../brevdataTyper';
+import { Mottaker as MottakerModell, Signatur as SignaturModell } from '../pdfModell';
+import { Header } from './Header';
+import { Signatur } from './Signatur';
 import { stripEmptyPortableTextBlocks } from './portableTextUtils';
+import { style } from './style';
 
 interface Props {
   mottaker: MottakerModell;
@@ -201,7 +202,8 @@ function FritekstComponent(delmalId: string, brevdata: BrevdataType): PortableTe
       (fritekst) => fritekst.parentId === delmalId && fritekst.key === props.value._key
     )?.fritekst;
     if (fritekst && fritekst.tekst) {
-      return <span style={{ whiteSpace: 'pre-wrap' }}>{fritekst.tekst}</span>;
+      const avsnitt = fritekst.tekst.split(/\n\s*\n/);
+      return avsnitt.map((avsnittet) => <p style={{ whiteSpace: 'pre-wrap' }}>{avsnittet}</p>);
     }
     return null;
   };
