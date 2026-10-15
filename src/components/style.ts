@@ -29,7 +29,11 @@ export const style = (saksnummer?: string) => `
         margin: 40px 40px 0 40px;
     }
 
-     .header {
+    h2, h3 { 
+      break-after: avoid 
+    }
+
+    .header {
            margin-bottom: 40px;
     }
 
