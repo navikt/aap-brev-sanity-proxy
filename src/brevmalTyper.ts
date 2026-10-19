@@ -17,6 +17,7 @@ export interface BetingetTekstType extends TypedObject {
 export interface KategorisertTekstRef extends TypedObject {
   _key: string;
   _type: 'kategorisertTekstRef';
+  erDefault?: boolean;
   tekst: TekstType;
 }
 
