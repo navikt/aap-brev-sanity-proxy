@@ -15,10 +15,10 @@ spec:
     min: 1
   resources:
     requests:
-      memory: 64Mi
+      memory: 120Mi
       cpu: 100m
     limits:
-      memory: 128Mi
+      memory: 512Mi
   liveness:
     path: /internal/health/isAlive
   readiness:
