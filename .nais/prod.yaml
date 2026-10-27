@@ -38,7 +38,6 @@ spec:
         - host: 948n95rd.apicdn.sanity.io
         - host: cdn.sanity.io
       rules:
-        - application: saksbehandling-pdfgen
         - application: pdfgenerator-saksbehandling
 
   observability:
@@ -57,8 +56,6 @@ spec:
       value: 948n95rd
     - name: SANITY_PERSPECTIVE
       value: published
-    - name: PDF_GEN_URL
-      value: http://saksbehandling-pdfgen
     - name: PDFGENERATOR_SAKSBEHANDLING_URL
       value: http://pdfgenerator-saksbehandling
   envFrom:
