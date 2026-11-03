@@ -186,7 +186,7 @@ function ValgComponent(brevdata: BrevdataType): PortableTextTypeComponent<ValgRe
           (fritekst) => fritekst.parentId === props.value.valg._id && alternativ._key === fritekst.key
         )?.fritekst;
         if (fritekst) {
-          return <span style={{ whiteSpace: 'pre-wrap' }}>{fritekst.tekst}</span>;
+          return <span style={{ whiteSpace: 'pre-line', overflowWrap: 'anywhere' }}>{fritekst.tekst}</span>;
         }
         return null;
       }
