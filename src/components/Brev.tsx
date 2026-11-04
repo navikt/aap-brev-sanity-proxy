@@ -114,13 +114,15 @@ function FaktagrunnlagComponent(
       faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ?? `<${props.value.visningsnavn}>`;
 
     const out = verdi.split('\n');
+    if(out.length === 1){
+      return <>{out.at(0)}</>;
+    }
     return (
       <>
-        {out.map((line, index) => (
-          <>
+        {out.map((line) => (
+          <p style={{ whiteSpace: 'pre-line', overflowWrap: 'anywhere' }}>
             {line}
-            {out.length - 1 !== index && <br />}
-          </>
+          </p>
         ))}
       </>
     );
