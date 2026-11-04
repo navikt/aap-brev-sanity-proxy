@@ -114,13 +114,15 @@ function FaktagrunnlagComponent(
       faktagrunnlag.find((x) => x.tekniskNavn === props.value.tekniskNavn)?.verdi ?? `<${props.value.visningsnavn}>`;
 
     const out = verdi.split('\n');
+    if(out.length === 1){
+      return <>{out.at(0)}</>;
+    }
     return (
       <>
-        {out.map((line, index) => (
-          <>
+        {out.map((line) => (
+          <p style={{ whiteSpace: 'pre-line', overflowWrap: 'anywhere' }}>
             {line}
-            {out.length - 1 !== index && <br />}
-          </>
+          </p>
         ))}
       </>
     );
@@ -185,10 +187,7 @@ function ValgComponent(brevdata: BrevdataType): PortableTextTypeComponent<ValgRe
         const fritekst = brevdata.fritekster.find(
           (fritekst) => fritekst.parentId === props.value.valg._id && alternativ._key === fritekst.key
         )?.fritekst;
-        if (fritekst) {
-          return <span style={{ whiteSpace: 'pre-line', overflowWrap: 'anywhere' }}>{fritekst.tekst}</span>;
-        }
-        return null;
+        return fritekstElement(fritekst);
       }
       default:
         return null;
@@ -201,11 +200,7 @@ function FritekstComponent(delmalId: string, brevdata: BrevdataType): PortableTe
     const fritekst = brevdata.fritekster.find(
       (fritekst) => fritekst.parentId === delmalId && fritekst.key === props.value._key
     )?.fritekst;
-    if (fritekst && fritekst.tekst) {
-      const avsnitt = fritekst.tekst.split(/\n\s*\n/);
-      return avsnitt.map((avsnittet) => <p style={{ whiteSpace: 'pre-wrap' }}>{avsnittet}</p>);
-    }
-    return null;
+    return fritekstElement(fritekst);
   };
 }
 
@@ -218,4 +213,12 @@ function BetingetTekstComponent(brevdata: BrevdataType): PortableTextTypeCompone
     }
     return null;
   };
+}
+
+function fritekstElement(fritekst: BrevdataType['fritekster'][number]['fritekst'] | undefined) {
+  if (fritekst && fritekst.tekst) {
+    const avsnitt = fritekst.tekst.split(/\n\s*\n/);
+    return avsnitt.map((avsnittet) => <p style={{ whiteSpace: 'pre-line', overflowWrap: 'anywhere' }}>{avsnittet}</p>);
+  }
+  return null;
 }
