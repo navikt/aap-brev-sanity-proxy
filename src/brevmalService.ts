@@ -1,7 +1,7 @@
-import { Språk } from './språk.js';
 import { Brevtype } from './brevtype.js';
-import { client } from './sanity/client';
 import { MalQuery } from './sanity/brevmalQuery';
+import { client } from './sanity/client';
+import { Språk } from './språk.js';
 
 // Ny brevmodell
 export async function hentBrevmal(brevtype: Brevtype, språk: Språk) {
@@ -13,6 +13,8 @@ export async function hentBrevmal(brevtype: Brevtype, språk: Språk) {
 const brevtypeTilSanityId = (brevtype: Brevtype) => {
   switch (brevtype) {
     case Brevtype.VEDTAK_11_18:
+      return 'ae37f07d-70d2-4c89-8cb7-e868540a9079';
+    case Brevtype.VEDTAK_11_18_OPPHØR_FULL_UFØR:
       return 'f0af3bf5-0a3c-47a2-affb-94b2b544c710';
     case Brevtype.INNVILGELSE:
       return '6b229785-4514-4506-8988-8ac81af51503';
