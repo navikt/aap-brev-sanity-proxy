@@ -37,6 +37,7 @@ const brevtypeTilSanityId = {
   [Brevtype.VEDTAK_11_7]: '49d079b8-bdad-42f8-9e0b-a39b2674baad',
   [Brevtype.VEDTAK_11_9]: 'd823bd4a-c1fc-4574-91c0-7c5d6e9052e1',
   [Brevtype.FORVALTNINGSMELDING]: '7a5b29f5-0fe5-4ce4-91df-6f03adeb0081',
+  [Brevtype.FORVALTNINGSMELDING_KANT_I_KANT]: '39935b4a-a725-40e9-bfb2-892df37521e8',
   [Brevtype.VEDTAK_ENDRING]: '34c2c2ad-2d93-4989-96e5-1701c0313542',
   [Brevtype.KLAGE_AVVIST]: '299aea66-6d90-4b81-b217-cca24fab359a',
   [Brevtype.KLAGE_OPPRETTHOLDELSE]: 'c312cb2e-46f6-4296-97a9-c05b2309fcb5',
