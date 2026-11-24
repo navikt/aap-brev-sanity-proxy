@@ -32,6 +32,8 @@ const brevtypeTilSanityId = (brevtype: Brevtype) => {
       return 'f6899080-5810-427c-87d8-43a909455347';
     case Brevtype.KLAGE_OPPRETTHOLDELSE:
       return '50112cec-dece-4dae-852a-efe605772ad4';
+    case Brevtype.FORVALTNINGSMELDING:
+      return 'bed17e63-6857-4da8-b923-e756d28a25ca';
     default:
       throw new Error(`Mangler mapping fra brevtype ${brevtype} til id`);
   }
