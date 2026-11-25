@@ -1,10 +1,15 @@
-import { getBrevtyper, getFaktagrunnlag, getInnhold, getTekstbolker } from './sanity/brevQueries.js';
 import { flettBrevtype } from './brevfletter.js';
-import { Språk } from './språk.js';
 import { Brevtype } from './brevtype.js';
+import { getBrevtyper, getFaktagrunnlag, getInnhold, getTekstbolker } from './sanity/brevQueries.js';
+import { Språk } from './språk.js';
 
 export async function flettBrev(ønsketBrevtype: Brevtype, ønsketSpråk: Språk) {
   const brevtypeId = brevtypeTilSanityId[ønsketBrevtype];
+
+  if (brevtypeId === undefined) {
+    throw new Error(`Mangler Sanity-ID for brevtype ${ønsketBrevtype}`);
+  }
+
   const [brevtyper, tekstbolker, innhold, faktagrunnlag] = await Promise.all([
     getBrevtyper(),
     getTekstbolker(),
@@ -21,7 +26,7 @@ export async function flettBrev(ønsketBrevtype: Brevtype, ønsketSpråk: Språk
   return flettBrevtype(brevtype, tekstbolker, innhold, faktagrunnlag, ønsketSpråk);
 }
 
-const brevtypeTilSanityId = {
+const brevtypeTilSanityId: Partial<Record<Brevtype, string>> = {
   [Brevtype.INNVILGELSE]: '37594d86-38d4-4f2a-9b75-cdc0cbe02e08',
   [Brevtype.VEDTAK_11_17]: '7365300c-6651-4b92-a2d9-6accd8b89b16',
   [Brevtype.VEDTAK_11_18]: 'd27e357b-bc38-4c8c-8ae5-4e398fc854a3',
