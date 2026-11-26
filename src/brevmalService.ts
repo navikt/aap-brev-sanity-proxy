@@ -35,7 +35,7 @@ const brevtypeTilSanityId = (brevtype: Brevtype) => {
     case Brevtype.FORVALTNINGSMELDING:
       return 'bed17e63-6857-4da8-b923-e756d28a25ca';
     case Brevtype.FORVALTNINGSMELDING_KANT_I_KANT:
-      return '9935b4a-a725-40e9-bfb2-892df37521e8';
+      return '39935b4a-a725-40e9-bfb2-892df37521e8';
     default:
       throw new Error(`Mangler mapping fra brevtype ${brevtype} til id`);
   }
